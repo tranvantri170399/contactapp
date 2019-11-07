@@ -16,6 +16,8 @@ public class Tritran {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("nguyen van tuan 9:11 pm 11/7/2019");
+        System.out.println("tran van tri");
     }
     
 }
