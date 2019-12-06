@@ -5,8 +5,6 @@
  */
 package ui;
 
-import controller.QuanLyNVController;
-
 /**
  *
  * @author Nguyễn Văn Tuấn
@@ -18,9 +16,6 @@ public class QLNVJPanel extends javax.swing.JPanel {
      */
     public QLNVJPanel() {
         initComponents();
-        
-        QuanLyNVController controller = new QuanLyNVController(jpnView5, btnAdd, txtSearch);
-        controller.setDateToTable();
     }
 
     /**
@@ -32,73 +27,21 @@ public class QLNVJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAdd = new javax.swing.JButton();
-        txtSearch = new javax.swing.JTextField();
-        jpnView5 = new javax.swing.JPanel();
-
-        setPreferredSize(new java.awt.Dimension(600, 500));
-
-        btnAdd.setBackground(new java.awt.Color(255, 0, 0));
-        btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnAdd.setText("Thêm mới");
-        btnAdd.setBorder(null);
-
-        txtSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-
-        jpnView5.setMinimumSize(new java.awt.Dimension(100, 200));
-        jpnView5.setPreferredSize(new java.awt.Dimension(580, 500));
-
-        javax.swing.GroupLayout jpnView5Layout = new javax.swing.GroupLayout(jpnView5);
-        jpnView5.setLayout(jpnView5Layout);
-        jpnView5Layout.setHorizontalGroup(
-            jpnView5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jpnView5Layout.setVerticalGroup(
-            jpnView5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
+        setBackground(new java.awt.Color(0, 153, 153));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JPanel jpnView5;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
