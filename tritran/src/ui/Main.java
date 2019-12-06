@@ -7,6 +7,8 @@ package ui;
 
 import bean.DMBean;
 import controller.ChuyenMHController;
+import helper.DialogHelper;
+import helper.ShareHelper;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class Main extends javax.swing.JFrame {
         listItem.add(new DMBean("QuanLyDC", pnQLDC,lblQLDC));
         
         controller.setEvent(listItem);
+        
+        init();
     }
 
     /**
@@ -50,6 +54,8 @@ public class Main extends javax.swing.JFrame {
         jpnmenu = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        pnMHC = new javax.swing.JPanel();
+        lblMHC = new javax.swing.JLabel();
         pnQLNV = new javax.swing.JPanel();
         lblQLNV = new javax.swing.JLabel();
         pnQLDA = new javax.swing.JPanel();
@@ -58,12 +64,11 @@ public class Main extends javax.swing.JFrame {
         lblQLPB = new javax.swing.JLabel();
         pnQLDC = new javax.swing.JPanel();
         lblQLDC = new javax.swing.JLabel();
-        pnMHC = new javax.swing.JPanel();
-        lblMHC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jpnview.setBackground(new java.awt.Color(255, 255, 255));
+        jpnview.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jpnviewLayout = new javax.swing.GroupLayout(jpnview);
         jpnview.setLayout(jpnviewLayout);
@@ -100,6 +105,27 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnMHC.setBackground(new java.awt.Color(51, 133, 255));
+
+        lblMHC.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblMHC.setForeground(new java.awt.Color(255, 255, 255));
+        lblMHC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMHC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/main.png"))); // NOI18N
+        lblMHC.setText("Màn Hình Chính");
+
+        javax.swing.GroupLayout pnMHCLayout = new javax.swing.GroupLayout(pnMHC);
+        pnMHC.setLayout(pnMHCLayout);
+        pnMHCLayout.setHorizontalGroup(
+            pnMHCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMHCLayout.createSequentialGroup()
+                .addComponent(lblMHC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnMHCLayout.setVerticalGroup(
+            pnMHCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblMHC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
         );
 
         pnQLNV.setBackground(new java.awt.Color(51, 133, 255));
@@ -184,27 +210,6 @@ public class Main extends javax.swing.JFrame {
             .addComponent(lblQLDC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
         );
 
-        pnMHC.setBackground(new java.awt.Color(51, 133, 255));
-
-        lblMHC.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblMHC.setForeground(new java.awt.Color(255, 255, 255));
-        lblMHC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMHC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/main.png"))); // NOI18N
-        lblMHC.setText("Màn Hình Chính");
-
-        javax.swing.GroupLayout pnMHCLayout = new javax.swing.GroupLayout(pnMHC);
-        pnMHC.setLayout(pnMHCLayout);
-        pnMHCLayout.setHorizontalGroup(
-            pnMHCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMHCLayout.createSequentialGroup()
-                .addComponent(lblMHC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pnMHCLayout.setVerticalGroup(
-            pnMHCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMHC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jpnmenuLayout = new javax.swing.GroupLayout(jpnmenu);
         jpnmenu.setLayout(jpnmenuLayout);
         jpnmenuLayout.setHorizontalGroup(
@@ -226,7 +231,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(pnMHC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(pnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(pnQLDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,4 +323,23 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel pnQLNV;
     private javax.swing.JPanel pnQLPB;
     // End of variables declaration//GEN-END:variables
+    void init(){
+        this.openWelcome();
+        this.openLogin();   
+    }
+    void openLogin(){
+        new DangNhapJDialog(this,true).setVisible(true);
+    }
+    void openWelcome(){ 
+        new ChaoJDialog(this, true).setVisible(true); 
+    } 
+    void logoff(){
+        ShareHelper.logoff();
+        this.openLogin();
+    }
+    void exit(){
+        if(DialogHelper.confirm(this,"Bạn thực sự muốn kết thúc ?")){
+            System.exit(0);
+        }
+    }
 }
