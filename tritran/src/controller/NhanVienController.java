@@ -55,5 +55,8 @@ public class NhanVienController {
             rboql.setSelected(false);
             rbonv.setSelected(true);
         }
+        txtmaduan.setText(""+nhanVien.getMaduan());
+        txtphongban.setText(""+nhanVien.getMaphongban());
+        txtmadc.setText(""+nhanVien.getMadiachi());
 }
 }
