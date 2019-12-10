@@ -25,7 +25,15 @@ public class NhanVienDAOiml implements NhanVienDAO{
     public List<NhanVien> getList() {
         try{
         Connection cons = jdbcHelper.getConnection();
-        String sql ="Select * from Employees";
+        String sql ="select [EmployeeID]\n" +
+"      ,[EmployeeName]\n" +
+"      ,[Username]\n" +
+"      ,[Password]\n" +
+"      ,[IsSystemAdmin]\n" +
+"      ,[RoleName]\n" +
+"      ,[ProjectID]\n" +
+"      ,[DepartmentID]\n" +
+"      ,[LocationID]  from Employees inner join Roles on Employees.RoleID=Roles.RoleID";
         List <NhanVien> list = new ArrayList<>();
         PreparedStatement ps = cons.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
@@ -36,7 +44,7 @@ public class NhanVienDAOiml implements NhanVienDAO{
             nv.setUsername(rs.getString("Username"));
             nv.setPassWord(rs.getString("Password"));
             nv.setAdmin(rs.getBoolean("IsSystemAdmin"));
-            nv.setRoleID(rs.getInt("RoleID"));
+            nv.setRoleName(rs.getString("RoleName"));
             nv.setMaduan(rs.getInt("ProjectID"));
             nv.setMaphongban(rs.getInt("DepartmentID"));
             nv.setMadiachi(rs.getInt("LocationID"));
@@ -87,7 +95,7 @@ public class NhanVienDAOiml implements NhanVienDAO{
         model.setUsername(rs.getString("Username"));
         model.setPassWord(rs.getString("Password"));
         model.setAdmin(rs.getBoolean("IsSystemAdmin"));
-        model.setRoleID(rs.getInt("RoleID"));
+       // model.setRoleID(rs.getInt("RoleID"));
         model.setMaduan(rs.getInt("ProjectID"));
         model.setMaphongban(rs.getInt("DepartmentID"));
         model.setMadiachi(rs.getInt("LocationID"));

@@ -43,7 +43,7 @@ public class ClassTableModel {
                 obj[3] = nhanVien.getUsername();
                 obj[4] = nhanVien.getPassWord();
                 obj[5] = nhanVien.isAdmin() == true? "Quản lý" : "Nhân Viên";
-                obj[6] = nhanVien.getRoleID();
+                obj[6] = nhanVien.getRoleName();
                 obj[7] = nhanVien.getMaduan();
                 obj[8] = nhanVien.getMaphongban();
                 obj[9] = nhanVien.getMadiachi();
