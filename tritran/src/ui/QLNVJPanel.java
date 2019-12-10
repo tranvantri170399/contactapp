@@ -21,6 +21,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         
         QuanLyNVController controller = new QuanLyNVController(jpnView5, btnAdd, txtSearch);
         controller.setDateToTable();
+        controller.setEvent();
     }
 
     /**

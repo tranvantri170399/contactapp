@@ -50,6 +50,36 @@ public class NhanVienDAOiml implements NhanVienDAO{
     }
         return null;
     }
+    @Override
+    public int createOrUpdate(NhanVien nhanVien){
+    try{
+        Connection cons = jdbcHelper.getConnection();
+        String sql = "INSERT INTO Employees(EmployeeID,EmployeeName,Username ,Password ,IsSystemAdmin ,RoleID ,ProjectID ,DepartmentID ,LocationID)";
+        PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, nhanVien.getMaNV());
+        ps.setString(2, nhanVien.getTenNV());
+        ps.setString(3, nhanVien.getUsername());
+        ps.setString(4, nhanVien.getPassWord());
+        ps.setBoolean(5, nhanVien.isAdmin());
+        ps.setInt(6, nhanVien.getRoleID());
+        ps.setInt(7, nhanVien.getMaduan());
+        ps.setInt(8, nhanVien.getMaphongban());
+        ps.setInt(9, nhanVien.getMadiachi());
+        ps.execute();
+        ResultSet rs = ps.getGeneratedKeys();
+        int generatedkety = 0;
+        if (rs.next()) {
+            generatedkety = rs.getInt(1);
+            }
+            ps.close();
+            cons.close();
+        return generatedkety;
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+    return  0;
+    }
+    
     public static void main(String[] args) {
         NhanVienDAO nhanVienDAO = new NhanVienDAOiml();
         System.out.println(nhanVienDAO.getList());

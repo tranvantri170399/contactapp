@@ -7,6 +7,7 @@ package controller;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -149,7 +150,31 @@ public class QuanLyNVController {
                 }
             }
             
-        });
-        
+        });       
+    }
+    public void setEvent(){
+        btnAdd.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                NhanVienJFrame frame = new NhanVienJFrame(new NhanVien());
+                frame.setTitle("Thông tin nhân viên");
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+                frame.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnAdd.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnAdd.setBackground(new Color(100,221,23));
+            }
+            
+            
+});
     }
 }
+

@@ -25,5 +25,10 @@ public class NhanVienServiceiml implements NhanVienService{
     public List<NhanVien> getList() {
         return nhanVienDao.getList();
     }
+
+    @Override
+    public int createOrUpdate(NhanVien nhanVien) {
+        return nhanVienDao.createOrUpdate(nhanVien);
+    }
     
 }
