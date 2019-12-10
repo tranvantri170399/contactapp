@@ -42,7 +42,7 @@ public class QuanLyNVController {
     
     private NhanVienService nhanVienSercvice = null;
     
-    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleID", "Mã dự án", "Mã phòng", "Địa chỉ"};
+    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ"};
     
     private TableRowSorter<TableModel> rowSorter = null;
     
@@ -136,7 +136,8 @@ public class QuanLyNVController {
                     nhanVien.setPassWord(model.getValueAt(selectedRowIndex, 4)!=null ?
                                     model.getValueAt(selectedRowIndex,4).toString():"");
                     nhanVien.setAdmin(model.getValueAt(selectedRowIndex,5).toString().equalsIgnoreCase("Quản Lý"));
-                    nhanVien.setRoleID((int) model.getValueAt(selectedRowIndex, 6));
+                    nhanVien.setRoleName(model.getValueAt(selectedRowIndex, 6) !=null ?
+                                    model.getValueAt(selectedRowIndex,6).toString():"");
                     nhanVien.setMaduan((int) model.getValueAt(selectedRowIndex,7));
                     nhanVien.setMaphongban((int) model.getValueAt(selectedRowIndex,8));
                     nhanVien.setMadiachi((int) model.getValueAt(selectedRowIndex,9));

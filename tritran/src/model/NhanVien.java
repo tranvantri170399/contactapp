@@ -15,7 +15,7 @@ public class NhanVien {
     private String Username;
     private String PassWord;
     private boolean Admin;
-    private int roleID;
+    private String RoleName;
     private int Maduan;
     private int Maphongban;
     private int Madiachi;
@@ -23,13 +23,13 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(int MaNV, String TenNV, String Username, String PassWord, boolean Admin, int roleID, int Maduan, int Maphongban, int Madiachi) {
+    public NhanVien(int MaNV, String TenNV, String Username, String PassWord, boolean Admin,  String RoleName, int Maduan, int Maphongban, int Madiachi) {
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.Username = Username;
         this.PassWord = PassWord;
         this.Admin = Admin;
-        this.roleID = roleID;
+        this.RoleName = RoleName;
         this.Maduan = Maduan;
         this.Maphongban = Maphongban;
         this.Madiachi = Madiachi;
@@ -75,12 +75,12 @@ public class NhanVien {
         this.Admin = Admin;
     }
 
-    public int getRoleID() {
-        return roleID;
+  public String getRoleName() {
+        return RoleName;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
+        public void setRoleName(String RoleName) {
+        this.RoleName = RoleName;
     }
 
     public int getMaduan() {

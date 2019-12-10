@@ -65,6 +65,7 @@ public class NhanVienController {
             rboql.setSelected(false);
             rbonv.setSelected(true);
         }
+        txtmavt.setText(nhanVien.getRoleName());
         txtmaduan.setText(""+nhanVien.getMaduan());
         txtphongban.setText(""+nhanVien.getMaphongban());
         txtmadc.setText(""+nhanVien.getMadiachi());
@@ -80,7 +81,7 @@ public class NhanVienController {
                     nhanVien.setUsername(txttaikhoan.getText());
                     nhanVien.setPassWord(txtmatkhau.getText());
                     nhanVien.setAdmin(rboql.isSelected());
-                    nhanVien.setRoleID(Integer.parseInt(txtmavt.getText()));
+                  //  nhanVien.setRoleID(Integer.parseInt(txtmavt.getText()));
                     nhanVien.setMaduan(0);
                 }
             }

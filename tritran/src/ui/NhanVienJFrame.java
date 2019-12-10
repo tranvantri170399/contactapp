@@ -82,7 +82,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jLabel5.setText("Vai trò");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel6.setText("Mã Vai trò");
+        jLabel6.setText("Vai trò");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel7.setText("Mã dự án");
