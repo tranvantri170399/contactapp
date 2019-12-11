@@ -5,6 +5,8 @@
  */
 package ui;
 
+import controller.QuanLyPBController;
+
 /**
  *
  * @author Nguyễn Văn Tuấn
@@ -16,6 +18,9 @@ public class QLPBJPanel extends javax.swing.JPanel {
      */
     public QLPBJPanel() {
         initComponents();
+        
+        QuanLyPBController controller = new QuanLyPBController(pnview, txtSearch);
+        controller.setDateToTable();
     }
 
     /**
@@ -27,21 +32,62 @@ public class QLPBJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(153, 153, 153));
+        pnview = new javax.swing.JPanel();
+        txtSearch = new javax.swing.JTextField();
+
+        pnview.setBorder(javax.swing.BorderFactory.createTitledBorder("Danh sách phòng ban"));
+        pnview.setMinimumSize(new java.awt.Dimension(100, 200));
+        pnview.setPreferredSize(new java.awt.Dimension(580, 500));
+
+        javax.swing.GroupLayout pnviewLayout = new javax.swing.GroupLayout(pnview);
+        pnview.setLayout(pnviewLayout);
+        pnviewLayout.setHorizontalGroup(
+            pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnviewLayout.setVerticalGroup(
+            pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 365, Short.MAX_VALUE)
+        );
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE))
+                    .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel pnview;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

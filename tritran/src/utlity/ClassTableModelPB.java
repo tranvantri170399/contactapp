@@ -7,15 +7,14 @@ package utlity;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.NhanVien;
-import model.Project;
+import model.PhongBan;
 
 /**
  *
  * @author Nguyễn Văn Tuấn
  */
-public class ClassTableModelDA {
-    public DefaultTableModel setTableProject(List<Project> listItem, String[] listColumn){
+public class ClassTableModelPB {
+     public DefaultTableModel setTablePhongBan(List<PhongBan> listItem, String[] listColumn){
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -35,12 +34,12 @@ public class ClassTableModelDA {
         int rows = listItem.size();
         if(rows > 0){
             for (int i = 0; i < rows; i++) {
-                Project nhanVien = listItem.get(i);
+                PhongBan phongBan = listItem.get(i);
                 obj = new  Object[columns];  
                  obj[0] = (i+1);
-                obj[1] = nhanVien.getProjectID();               
-                obj[2] = nhanVien.getProjectName();
-                obj[3] = nhanVien.getNumOfEmployee();
+                obj[1] = phongBan.getDepartmentID();             
+                obj[2] = phongBan.getDepartmentName();
+                obj[3] = phongBan.getNumOfEmployee();
 
                 dtm.addRow(obj);
                 
