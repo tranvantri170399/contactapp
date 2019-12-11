@@ -126,7 +126,7 @@ public class NhanVienDAOiml implements NhanVienDAO{
         model.setUsername(rs.getString("Username"));
         model.setPassWord(rs.getString("Password"));
         model.setAdmin(rs.getBoolean("IsSystemAdmin"));
-        //model.setRoleID(rs.getInt("RoleID"));
+//        model.setRoleName(rs.getString("RoleName"));
         model.setMaduan(rs.getInt("ProjectID"));
         model.setMaphongban(rs.getInt("DepartmentID"));
         model.setMadiachi(rs.getInt("LocationID"));

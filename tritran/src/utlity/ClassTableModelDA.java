@@ -22,10 +22,10 @@ public class ClassTableModelDA {
                 return false;
             }
 
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 10 ? Boolean.class : String.class;
-            }
+//            @Override
+//            public Class<?> getColumnClass(int columnIndex) {
+//                return columnIndex == 10 ? Boolean.class : String.class;
+//            }
             
             
         };
@@ -37,9 +37,9 @@ public class ClassTableModelDA {
             for (int i = 0; i < rows; i++) {
                 Project nhanVien = listItem.get(i);
                 obj = new  Object[columns];  
-                
-                obj[0] = nhanVien.getProjectID();
-                obj[1] = (i+1);
+                 obj[0] = (i+1);
+                obj[1] = nhanVien.getProjectID();
+               
                 obj[2] = nhanVien.getProjectName();
                 obj[3] = nhanVien.getNumOfEmployee();
 

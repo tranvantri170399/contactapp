@@ -35,7 +35,7 @@ public class QuanLyDAController {
     
     private DuAnService duanservice = null;
     
-    private String[] listcolumn = {"Mã Project","ProjectName", "So nhan vien"};
+    private String[] listcolumn = {"STT","Mã Project","ProjectName", "So nhan vien"};
     
     private TableRowSorter<TableModel> rowSorter = null;
     public  QuanLyDAController(){    
@@ -83,13 +83,9 @@ public class QuanLyDAController {
 
         });
         
-        table.getColumnModel().getColumn(0).setMinWidth(0);
-        table.getColumnModel().getColumn(0).setMaxWidth(0);
-        table.getColumnModel().getColumn(0).setPreferredWidth(0);
-         
-        table.getColumnModel().getColumn(1).setMinWidth(50);
-        table.getColumnModel().getColumn(1).setMaxWidth(50);
-        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(0).setPreferredWidth(50);
         
         
         table.getTableHeader().setFont(new Font("Arrial",Font.BOLD,14));

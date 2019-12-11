@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import model.NhanVien;
+import service.NhanVienService;
+import service.NhanVienServiceiml;
 
 /**
  *
@@ -34,6 +36,8 @@ public class NhanVienController {
     private JLabel mess;
     
     private NhanVien nhanVien = null;
+    
+    private NhanVienService nhanVienService = null;
 
     public NhanVienController(JButton btnsave, JTextField txtmanv, JTextField txthoten, JTextField txttaikhoan, JTextField txtmatkhau, JRadioButton rboql, JRadioButton rbonv, JTextField txtmavt, JTextField txtmaduan, JTextField txtphongban, JTextField txtmadc,JLabel mess) {
         this.btnsave = btnsave;
@@ -48,6 +52,8 @@ public class NhanVienController {
         this.txtphongban = txtphongban;
         this.txtmadc = txtmadc;
         this.mess =mess;
+        
+        this.nhanVienService = new NhanVienServiceiml();
     }
 
     
@@ -81,8 +87,16 @@ public class NhanVienController {
                     nhanVien.setUsername(txttaikhoan.getText());
                     nhanVien.setPassWord(txtmatkhau.getText());
                     nhanVien.setAdmin(rboql.isSelected());
-                  //  nhanVien.setRoleID(Integer.parseInt(txtmavt.getText()));
-                    nhanVien.setMaduan(0);
+                    nhanVien.setRoleName(txtmavt.getText());
+                    nhanVien.setMaduan(Integer.parseInt(txtmaduan.getText()));
+                    nhanVien.setMaphongban(Integer.parseInt(txtphongban.getText()));
+                    nhanVien.setMadiachi(Integer.parseInt(txtmadc.getText()));
+                    int lastID = nhanVienService.createOrUpdate(nhanVien);
+                    if(lastID > 0){
+                    nhanVien.setMaNV(lastID);
+                    txtmanv.setText("#" + lastID);
+                    mess.setText("Cập nhật thành công");
+                    }
                 }
             }
 

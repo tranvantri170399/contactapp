@@ -5,6 +5,8 @@
  */
 package ui;
 
+import controller.QuanLyDAController;
+
 /**
  *
  * @author Nguyễn Văn Tuấn
@@ -16,7 +18,10 @@ public class QLDAJPanel extends javax.swing.JPanel {
      */
     public QLDAJPanel() {
         initComponents();
-    }
+        QuanLyDAController controller = new QuanLyDAController(jpnView, txtSearch);
+        controller.setDateToTable();
+        
+                }
 
     /**
      * This method is called from within the constructor to initialize the form.
