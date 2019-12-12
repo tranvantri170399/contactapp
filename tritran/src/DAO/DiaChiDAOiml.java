@@ -23,7 +23,15 @@ public class DiaChiDAOiml implements DiaChiDAO{
     public List<DiaChi> getList() {
         try{
         Connection cons = jdbcHelper.getConnection();
-        String sql ="";
+        String sql ="SELECT Locations.*,COUNT(Employees.EmployeeID) AS NumOfEmployee\n" +
+"                FROM Locations, Employees\n" +
+"                WHERE Locations.LocationID = Employees.LocationID\n" +
+"                   GROUP BY Locations.LocationID, Locations.LocationName,Locations.LocationAllowance\n" +
+"                   UNION\n" +
+"                   SELECT Locations.*,0 AS NumOfEmployee\n" +
+"                   FROM Locations,Employees\n" +
+"                   WHERE Locations.LocationID not in(SELECT Employees.LocationID FROM Employees )\n" +
+"                   GROUP BY Locations.LocationID, Locations.LocationName,Locations.LocationAllowance";
         List <DiaChi> list = new ArrayList<>();
         PreparedStatement ps = cons.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
@@ -48,6 +56,9 @@ public class DiaChiDAOiml implements DiaChiDAO{
     public int createOrUpdate(DiaChi diaChi) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
+    public static void main(String[] args) {
+        DiaChiDAO diaChiDAO = new DiaChiDAOiml();
+        System.out.println(diaChiDAO.getList());
+    }
+    
 }

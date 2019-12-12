@@ -21,12 +21,7 @@ public class ClassTableModelPB {
                 return false;
             }
 
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 4 ? Boolean.class : String.class;
-            }
-            
-            
+                       
         };
         dtm.setColumnIdentifiers(listColumn);
         int columns = listColumn.length;
@@ -40,7 +35,6 @@ public class ClassTableModelPB {
                 obj[1] = phongBan.getDepartmentID();             
                 obj[2] = phongBan.getDepartmentName();
                 obj[3] = phongBan.getNumOfEmployee();
-
                 dtm.addRow(obj);
                 
             }

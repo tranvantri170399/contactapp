@@ -14,6 +14,5 @@ import model.DiaChi;
  */
 public interface DiaChiService {
     public List<DiaChi> getList();
-    
     public int createOrUpdate(DiaChi diaChi);
 }

@@ -13,7 +13,7 @@ import model.DiaChi;
  * @author Nguyễn Văn Tuấn
  */
 public interface DiaChiDAO {
-public List<DiaChi> getList();
+    public List<DiaChi> getList();
     
     public int createOrUpdate(DiaChi diaChi);
 }

@@ -13,7 +13,7 @@ import model.PhongBan;
  * @author Nguyễn Văn Tuấn
  */
 public interface PhongBanDAO {
-     public List<PhongBan> getList();
+    public List<PhongBan> getList();
     
     public int createOrUpdate(PhongBan phongBan);
 }

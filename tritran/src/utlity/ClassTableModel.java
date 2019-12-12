@@ -21,10 +21,10 @@ public class ClassTableModel {
                 return false;
             }
 
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 10 ? Boolean.class : String.class;
-            }
+//            @Override
+//            public Class<?> getColumnClass(int columnIndex) {
+//                return columnIndex == 11 ? Boolean.class : String.class;
+//            }
             
             
         };

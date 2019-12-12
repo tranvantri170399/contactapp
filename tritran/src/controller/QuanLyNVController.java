@@ -42,7 +42,7 @@ public class QuanLyNVController {
     
     private NhanVienService nhanVienSercvice = null;
     
-    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ"};
+    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ","DELETE"};
     
     private TableRowSorter<TableModel> rowSorter = null;
     
