@@ -19,8 +19,9 @@ public class QLDCJPanel extends javax.swing.JPanel {
      */
     public QLDCJPanel() {
         initComponents();
-        QuanLyDCController quanLyDCController = new QuanLyDCController(pnview, txtSearch);
+        QuanLyDCController quanLyDCController = new QuanLyDCController(pnview, txtSearch,btnadd);
         quanLyDCController.setDateToTable();
+        quanLyDCController.setEvent();
 
     }
 
@@ -35,6 +36,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
 
         pnview = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
+        btnadd = new javax.swing.JButton();
 
         pnview.setBorder(javax.swing.BorderFactory.createTitledBorder("Địa Chỉ"));
         pnview.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -48,7 +50,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
         );
         pnviewLayout.setVerticalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGap(0, 275, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +58,8 @@ public class QLDCJPanel extends javax.swing.JPanel {
                 txtSearchActionPerformed(evt);
             }
         });
+
+        btnadd.setText("ADD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,7 +71,9 @@ public class QLDCJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE))
+                        .addGap(85, 85, 85)
+                        .addComponent(btnadd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE))
                     .addComponent(pnview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -75,9 +81,11 @@ public class QLDCJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnadd))
                 .addGap(18, 18, 18)
-                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -88,6 +96,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnadd;
     private javax.swing.JPanel pnview;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

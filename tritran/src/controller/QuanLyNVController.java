@@ -45,7 +45,7 @@ public class QuanLyNVController {
     
     private NhanVienService nhanVienSercvice = null;
     
-    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ"};
+    private String[] listcolumn = {"STT","Mã NV", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ"};
     
     private TableRowSorter<TableModel> rowSorter = null;
     
@@ -147,8 +147,6 @@ public class QuanLyNVController {
                     frame.setResizable(false);
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
-                    itq=1;
-                    System.out.println(""+itq);
                 }
             }
             
@@ -158,7 +156,6 @@ public class QuanLyNVController {
         btnAdd.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //System.out.println(""+itq);
                 NhanVienJFrame frame = new NhanVienJFrame(new NhanVien());
                 frame.setTitle("Thông tin nhân viên");
                 frame.setLocationRelativeTo(null);

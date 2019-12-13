@@ -8,7 +8,10 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,9 +22,12 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.DiaChi;
 import model.Project;
 import service.DuAnService;
 import service.DuAnServiceiml;
+import ui.DiaChiJFrame;
+import ui.DuAnJFrame;
 import utlity.ClassTableModelDA;
 
 /**
@@ -31,7 +37,7 @@ import utlity.ClassTableModelDA;
 public class QuanLyDAController {
     private JPanel jpnView;
     private JTextField txtSearch;
-    
+    private JButton btnadd;
     
     private DuAnService duanservice = null;
     
@@ -41,9 +47,11 @@ public class QuanLyDAController {
     public  QuanLyDAController(){    
     }
     
-    public QuanLyDAController(JPanel jpnView, JTextField txtSearch) {
+    public QuanLyDAController(JPanel jpnView, JTextField txtSearch,JButton btnadd) {
         this.jpnView = jpnView;
         this.txtSearch = txtSearch;
+        this.btnadd = btnadd;
+        
         this.duanservice = new DuAnServiceiml();
     }
     
@@ -104,36 +112,42 @@ public class QuanLyDAController {
         jpnView.validate();
         jpnView.repaint();
         
-//        table.addMouseListener(new MouseAdapter(){
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                if(e.getClickCount()==2 && table.getSelectedRow() != -1){
-//                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
-//                    int selectedRowIndex = table.getSelectedRow();
-//                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
-//                    System.out.println(selectedRowIndex);
-//                    
-//                    NhanVien nhanVien = new NhanVien();
-//                    nhanVien.setMaNV((int) model.getValueAt(selectedRowIndex, 0));
-//                    nhanVien.setTenNV(model.getValueAt(selectedRowIndex, 2).toString());
-//                    nhanVien.setUsername(model.getValueAt(selectedRowIndex, 3) !=null ?
-//                                    model.getValueAt(selectedRowIndex,3).toString():"");
-//                    nhanVien.setPassWord(model.getValueAt(selectedRowIndex, 4)!=null ?
-//                                    model.getValueAt(selectedRowIndex,4).toString():"");
-//                    nhanVien.setAdmin(model.getValueAt(selectedRowIndex,5).toString().equalsIgnoreCase("Quản Lý"));
-//                    nhanVien.setRoleName(model.getValueAt(selectedRowIndex, 6) !=null ?
-//                                    model.getValueAt(selectedRowIndex,6).toString():"");
-//                    nhanVien.setMaduan((int) model.getValueAt(selectedRowIndex,7));
-//                    nhanVien.setMaphongban((int) model.getValueAt(selectedRowIndex,8));
-//                    nhanVien.setMadiachi((int) model.getValueAt(selectedRowIndex,9));
-//                    
-//                   
-//                }
-//            }
-//            
-//        });
+        table.addMouseListener(new MouseAdapter() {
+               @Override
+               public void mouseClicked(MouseEvent e) {
+                   if(e.getClickCount()==2 && table.getSelectedRow() != -3){
+                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                    
+                    Project project = new Project();
+                    project.setProjectID((int)model.getValueAt(selectedRowIndex, 1));
+                    project.setProjectName(model.getValueAt(selectedRowIndex, 2).toString());
+                    
+                    DuAnJFrame frame = new DuAnJFrame(project);
+                    frame.setTitle("Thông Tin Dự Án");
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                   }
+               }
+            
+        });
        
        }
+        public void setEvent(){
+            btnadd.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    DuAnJFrame frame = new DuAnJFrame(new Project());
+                    frame.setTitle("Thông Tin Dự Án");
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                }
+                
+            });
+        }
 
 
 }

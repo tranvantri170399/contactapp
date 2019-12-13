@@ -19,8 +19,9 @@ public class QLPBJPanel extends javax.swing.JPanel {
     public QLPBJPanel() {
         initComponents();
         
-        QuanLyPBController controller = new QuanLyPBController(pnview, txtSearch);
+        QuanLyPBController controller = new QuanLyPBController(pnview, txtSearch, btnadd);
         controller.setDateToTable();
+        controller.setEvent();
     }
 
     /**
@@ -34,6 +35,7 @@ public class QLPBJPanel extends javax.swing.JPanel {
 
         pnview = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
+        btnadd = new javax.swing.JButton();
 
         pnview.setBorder(javax.swing.BorderFactory.createTitledBorder("Danh sách phòng ban"));
         pnview.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -43,11 +45,11 @@ public class QLPBJPanel extends javax.swing.JPanel {
         pnview.setLayout(pnviewLayout);
         pnviewLayout.setHorizontalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
         pnviewLayout.setVerticalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +57,8 @@ public class QLPBJPanel extends javax.swing.JPanel {
                 txtSearchActionPerformed(evt);
             }
         });
+
+        btnadd.setText("add");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,19 +68,27 @@ public class QLPBJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE))
-                    .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnadd)
+                        .addGap(47, 47, 47))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnadd)))
                 .addGap(18, 18, 18)
-                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -87,6 +99,7 @@ public class QLPBJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnadd;
     private javax.swing.JPanel pnview;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

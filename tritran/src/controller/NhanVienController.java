@@ -97,7 +97,7 @@ public class NhanVienController {
 //                    if(lastID > 0){
 //                    nhanVien.setMaNV(lastID);
 //                    txtmanv.setText("#" + lastID);
-//                    mess.setText("Cập nhật thành công");
+                     mess.setText("Cập nhật thành công");
 //                    }
                 }
             }
