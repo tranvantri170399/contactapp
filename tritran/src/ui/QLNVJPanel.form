@@ -24,7 +24,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpnView5" max="32767" attributes="0"/>
+                  <Component id="jpnView5" pref="576" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="txtSearch" min="-2" pref="250" max="-2" attributes="0"/>
                       <EmptySpace pref="315" max="32767" attributes="0"/>
@@ -44,7 +44,7 @@
                   <Component id="txtSearch" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jpnView5" pref="429" max="32767" attributes="0"/>
+              <Component id="jpnView5" pref="425" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>

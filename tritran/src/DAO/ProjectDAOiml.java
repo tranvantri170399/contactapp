@@ -19,6 +19,7 @@ import model.Project;
  */
 public class ProjectDAOiml implements ProjectDAO{
 
+
     @Override
     public List<Project> getList() {
          try{
@@ -52,6 +53,7 @@ public class ProjectDAOiml implements ProjectDAO{
     public int createOrUpdate(Project project) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+ 
      public static void main(String[] args) {
         ProjectDAO ProjectDAO = new ProjectDAOiml();
         System.out.println(ProjectDAO.getList());

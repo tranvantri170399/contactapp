@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -28,10 +29,11 @@ public class NhanVienController {
     private JTextField txtmatkhau;
     private JRadioButton rboql;
     private JRadioButton rbonv;
-    private  JTextField txtmavt;
-    private  JTextField txtmaduan;
-    private JTextField txtphongban;
-    private JTextField txtmadc;
+    //private  JTextField txtmavt;
+    private  JComboBox jComboBox4;
+    private  JComboBox jComboBox1;
+    private  JComboBox jComboBox2;
+    private  JComboBox jComboBox3;
     
     private JLabel mess;
     
@@ -39,7 +41,7 @@ public class NhanVienController {
     
     private NhanVienService nhanVienService = null;
 
-    public NhanVienController(JButton btnsave, JTextField txtmanv, JTextField txthoten, JTextField txttaikhoan, JTextField txtmatkhau, JRadioButton rboql, JRadioButton rbonv, JTextField txtmavt, JTextField txtmaduan, JTextField txtphongban, JTextField txtmadc,JLabel mess) {
+    public NhanVienController(JButton btnsave, JTextField txtmanv, JTextField txthoten, JTextField txttaikhoan, JTextField txtmatkhau, JRadioButton rboql, JRadioButton rbonv, JComboBox jComboBox4,JComboBox jComboBox1, JComboBox jComboBox2, JComboBox jComboBox3,JLabel mess) {
         this.btnsave = btnsave;
         this.txtmanv = txtmanv;
         this.txthoten = txthoten;
@@ -47,10 +49,11 @@ public class NhanVienController {
         this.txtmatkhau = txtmatkhau;
         this.rboql = rboql;
         this.rbonv = rbonv;
-        this.txtmavt = txtmavt;
-        this.txtmaduan = txtmaduan;
-        this.txtphongban = txtphongban;
-        this.txtmadc = txtmadc;
+       // this.txtmavt=txtmavt;
+        this.jComboBox4 = jComboBox4;
+        this.jComboBox1 =jComboBox1;
+        this.jComboBox2 = jComboBox2;
+        this.jComboBox3 = jComboBox3;
         this.mess =mess;
         
         this.nhanVienService = new NhanVienServiceiml();
@@ -71,15 +74,18 @@ public class NhanVienController {
             rboql.setSelected(false);
             rbonv.setSelected(true);
         }
-        txtmavt.setText(nhanVien.getRoleName());
-        txtmaduan.setText(""+nhanVien.getMaduan());
-        txtphongban.setText(""+nhanVien.getMaphongban());
-        txtmadc.setText(""+nhanVien.getMadiachi());
+       // txtmavt.setText(nhanVien.getRoleName());
+        jComboBox4.addItem(""+nhanVien.getRoleName());
+        jComboBox1.addItem(""+nhanVien.getMaduan());
+         jComboBox2.addItem(""+nhanVien.getMaphongban());
+         jComboBox3.addItem(""+nhanVien.getMadiachi());
+
 }
     public void setEvent(){
         btnsave.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+             //   System.out.println(""+itq);
                 if(txthoten.getText().length()==0){
                     mess.setText("Vui lòng điền thông tin bắt buộc !");
                 }else{
@@ -87,16 +93,12 @@ public class NhanVienController {
                     nhanVien.setUsername(txttaikhoan.getText());
                     nhanVien.setPassWord(txtmatkhau.getText());
                     nhanVien.setAdmin(rboql.isSelected());
-                    nhanVien.setRoleName(txtmavt.getText());
-                    nhanVien.setMaduan(Integer.parseInt(txtmaduan.getText()));
-                    nhanVien.setMaphongban(Integer.parseInt(txtphongban.getText()));
-                    nhanVien.setMadiachi(Integer.parseInt(txtmadc.getText()));
-                    int lastID = nhanVienService.createOrUpdate(nhanVien);
-                    if(lastID > 0){
-                    nhanVien.setMaNV(lastID);
-                    txtmanv.setText("#" + lastID);
-                    mess.setText("Cập nhật thành công");
-                    }
+//                    int lastID = nhanVienService.createOrUpdate(nhanVien);
+//                    if(lastID > 0){
+//                    nhanVien.setMaNV(lastID);
+//                    txtmanv.setText("#" + lastID);
+//                    mess.setText("Cập nhật thành công");
+//                    }
                 }
             }
 

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Connhanvien;
 import model.NhanVien;
 
 
@@ -59,35 +60,34 @@ public class NhanVienDAOiml implements NhanVienDAO{
     }
         return null;
     }
-    @Override
-    public int createOrUpdate(NhanVien nhanVien){
-    try{
-        Connection cons = jdbcHelper.getConnection();
-        String sql = "INSERT INTO Employees(EmployeeID,EmployeeName,Username ,Password ,IsSystemAdmin ,RoleID ,ProjectID ,DepartmentID ,LocationID)";
-        PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-        ps.setInt(1, nhanVien.getMaNV());
-        ps.setString(2, nhanVien.getTenNV());
-        ps.setString(3, nhanVien.getUsername());
-        ps.setString(4, nhanVien.getPassWord());
-        ps.setBoolean(5, nhanVien.isAdmin());
-        ps.setString(6, nhanVien.getRoleName());
-        ps.setInt(7, nhanVien.getMaduan());
-        ps.setInt(8, nhanVien.getMaphongban());
-        ps.setInt(9, nhanVien.getMadiachi());
-        ps.execute();
-        ResultSet rs = ps.getGeneratedKeys();
-        int generatedkety = 0;
-        if (rs.next()) {
-            generatedkety = rs.getInt(1);
-            }
-            ps.close();
-            cons.close();
-        return generatedkety;
-    }catch(Exception e){
-        e.printStackTrace();
-    }
-    return  0;
-    }
+//    public int createOrUpdate(Connhanvien nhanVien){
+//    try{
+//        Connection cons = jdbcHelper.getConnection();
+//        String sql = "INSERT INTO Employees(EmployeeName,Username ,Password ,IsSystemAdmin ,RoleID ,ProjectID ,DepartmentID ,LocationID)";
+//        PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+//        //ps.setInt(1, nhanVien.getMaNV());
+//        ps.setString(1, nhanVien.getTenNV());
+//        ps.setString(2, nhanVien.getUsername());
+//        ps.setString(3, nhanVien.getPassWord());
+//        ps.setBoolean(4, nhanVien.isAdmin());
+//        ps.setInt(5, nhanVien.getRoleID());
+//        ps.setInt(6, nhanVien.getMaduan());
+//        ps.setInt(7, nhanVien.getMaphongban());
+//        ps.setInt(8, nhanVien.getMadiachi());
+//        ps.execute();
+//        ResultSet rs = ps.getGeneratedKeys();
+//        int generatedkety = 0;
+//        if (rs.next()) {
+//            generatedkety = rs.getInt(1);
+//            }
+//            ps.close();
+//            cons.close();
+//        return generatedkety;
+//    }catch(Exception e){
+//        e.printStackTrace();
+//    }
+//    return  0;
+//    }
     
     public static void main(String[] args) {
         NhanVienDAO nhanVienDAO = new NhanVienDAOiml();
@@ -132,5 +132,12 @@ public class NhanVienDAOiml implements NhanVienDAO{
         model.setMadiachi(rs.getInt("LocationID"));
         return model;
     }
+
+    @Override
+    public int createOrUpdate(NhanVien nhanVien) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     }
 

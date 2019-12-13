@@ -6,6 +6,7 @@
 package ui;
 
 import controller.QuanLyNVController;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -123,4 +124,5 @@ public class QLNVJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jpnView5;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
 }

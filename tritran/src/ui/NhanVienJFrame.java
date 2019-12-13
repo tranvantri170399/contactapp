@@ -5,8 +5,25 @@
  */
 package ui;
 
+import DAO.ProjectDAOiml;
 import controller.NhanVienController;
+import helper.jdbcHelper;
+import static helper.jdbcHelper.prepareStatement;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import model.Connhanvien;
 import model.NhanVien;
+import model.Project;
+import model.chucvu;
 
 /**
  *
@@ -20,11 +37,21 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     public NhanVienJFrame(NhanVien nhanVien) {
         initComponents();
         
-        NhanVienController controller = new NhanVienController(btnsave, txtmanv, txthoten, txttaikhoan, txtmatkhau, rboql, rbonv, txtmavt, txtmaduan, txtphongban, txtmadc,mess);
+        NhanVienController controller = new NhanVienController(btnsave, txtmanv, txthoten, txttaikhoan, txtmatkhau, rboql, rbonv, jComboBox4, jComboBox1, jComboBox2, jComboBox3,mess);
         controller.setView(nhanVien);
         controller.setEvent();
-    }
+        fillComboBox();
+        fillComboBox2();
+        fillComboBox3();
+        fillComboBox4();
+        Connhanvien nv=getModel();
+        
 
+    }
+    	private String filename=null;
+	private byte[] personimage;
+        ByteArrayOutputStream bos;
+        private String tt="";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +62,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,12 +80,19 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         txtmatkhau = new javax.swing.JTextField();
         rboql = new javax.swing.JRadioButton();
         rbonv = new javax.swing.JRadioButton();
-        txtmavt = new javax.swing.JTextField();
-        txtmaduan = new javax.swing.JTextField();
-        txtphongban = new javax.swing.JTextField();
-        txtmadc = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        lblimage = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jComboBox4 = new javax.swing.JComboBox<>();
         btnsave = new javax.swing.JButton();
         mess = new javax.swing.JLabel();
+        txttest = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -105,6 +140,23 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         buttonGroup1.add(rbonv);
         rbonv.setText("Nhân Viên");
 
+        lblimage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblimage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblimageMouseClicked(evt);
+            }
+        });
+
+        jLabel11.setText("Ngay sinh");
+
+        jLabel12.setText("Gioi Tinh");
+
+        buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setText("nam");
+
+        buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setText("nu");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,30 +171,9 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtmavt, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtmaduan, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txttaikhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel8))))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtphongban, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtmadc, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
@@ -154,44 +185,95 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addGap(57, 57, 57)
                             .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, 149, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, 149, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(76, 76, 76)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(27, 27, 27)
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton2)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtmanv)
-                    .addComponent(jLabel6)
-                    .addComponent(txtmavt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txthoten)
-                    .addComponent(txtmaduan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txttaikhoan)
-                    .addComponent(jLabel8)
-                    .addComponent(txtphongban))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtmatkhau)
-                    .addComponent(jLabel9)
-                    .addComponent(txtmadc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(rboql)
-                    .addComponent(rbonv)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtmanv)
+                            .addComponent(jLabel6)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txthoten)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txttaikhoan)
+                            .addComponent(jLabel8)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtmatkhau)
+                            .addComponent(jLabel9)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(rboql)
+                            .addComponent(rbonv)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(jRadioButton1)
+                                .addComponent(jRadioButton2)))
+                        .addContainerGap())))
         );
 
         btnsave.setBackground(new java.awt.Color(0, 51, 255));
         btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -203,6 +285,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
                         .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -214,9 +298,11 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnsave)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnsave)
+                        .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -225,13 +311,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -241,6 +327,41 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtmanvActionPerformed
 
+    private void lblimageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblimageMouseClicked
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        //chooser.showSaveDialog(null);
+        File f = chooser.getSelectedFile();
+        filename = f.getAbsolutePath();
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblimage.getWidth(), lblimage.getHeight(),java.awt.Image.SCALE_SMOOTH));
+        lblimage.setIcon(imageIcon);
+        try {
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for (int readnum; (readnum= fis.read(buf))!=-1; ) {
+                        bos.write(buf, 0, readnum);
+                }
+                personimage= bos.toByteArray();
+        } catch (Exception ex) {
+                ex.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_lblimageMouseClicked
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+
+                 Connhanvien nv= getModel();
+                 String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
+                            nv.getRoleID(),
+                            nv.getMaduan(),
+                            nv.getMaphongban(),
+                            nv.getMadiachi());
+                
+    }//GEN-LAST:event_btnsaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,7 +370,15 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsave;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -260,16 +389,160 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel lblimage;
     private javax.swing.JLabel mess;
     private javax.swing.JRadioButton rbonv;
     private javax.swing.JRadioButton rboql;
     private javax.swing.JTextField txthoten;
-    private javax.swing.JTextField txtmadc;
-    private javax.swing.JTextField txtmaduan;
     private javax.swing.JTextField txtmanv;
     private javax.swing.JTextField txtmatkhau;
-    private javax.swing.JTextField txtmavt;
-    private javax.swing.JTextField txtphongban;
     private javax.swing.JTextField txttaikhoan;
+    private javax.swing.JTextField txttest;
     // End of variables declaration//GEN-END:variables
+    	
+                    public  chucvu m= new chucvu();
+    public void fillComboBox(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select ProjectID from Projects";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   this.jComboBox1.addItem(rs.getString("ProjectID"));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        
+        public void fillComboBox2(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select DepartmentID from Departments";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   this.jComboBox2.addItem(rs.getString("DepartmentID"));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        
+        
+        public void fillComboBox3(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select LocationID from Locations";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   this.jComboBox3.addItem(rs.getString("LocationID"));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+//        public List<chucvu> load(){
+//            try{
+//                Connection cons = jdbcHelper.getConnection();
+//                tt=(jComboBox4.getSelectedItem().toString());
+//                System.out.println(""+tt);
+//                String sql ="select * from Roles where RoleName=?";
+//                List <chucvu> list = new ArrayList<>();
+//               //PreparedStatement ps = cons.prepareCall(sql);
+//                PreparedStatement ps = prepareStatement(sql);
+//                ps.setString(1,tt);
+//                ResultSet rs = ps.executeQuery();
+//                while(rs.next()){
+//                    chucvu nnv=new chucvu();
+//                    nnv.setRoleID(rs.getInt("RoleID"));  
+//                    nnv.setRoleName(rs.getString("RoleName"));
+//                    nnv.setRoleAllowance(rs.getInt("RoleAllowance"));
+//                    list.add(nnv);
+//                }
+//                ps.close();
+//                rs.close();
+//               return list;
+//            }catch(Exception e){
+//                e.printStackTrace();
+//            }
+//        return null;
+//        
+//        }
+        private int ID=0;
+         public void fillComboBox10(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select RoleID from Roles where RoleName=?";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                tt=(jComboBox4.getSelectedItem().toString());
+                System.out.println(""+tt);
+                ps.setString(1,tt);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   this.txttest.setText(rs.getString("RoleID"));
+                   ID=(Integer.parseInt(rs.getString("RoleID")));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        
+        public void fillComboBox4(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select RoleName from Roles";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   this.jComboBox4.addItem(rs.getString("RoleName"));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        
+	  Connhanvien getModel(){
+		  Connhanvien model = new Connhanvien();
+                    model.setTenNV(txthoten.getText());
+                    model.setUsername(txttaikhoan.getText());
+                    model.setPassWord(txtmatkhau.getText());
+                    if (rbonv.isSelected()) {
+                        model.setAdmin(false);
+  
+                    }else{
+                        model.setAdmin(true); 
+                    }
+                    fillComboBox10();
+                    model.setRoleID(ID);
+                    model.setMaduan(Integer.parseInt((String) jComboBox1.getSelectedItem()));
+                    model.setMaphongban(Integer.parseInt((String) jComboBox2.getSelectedItem()));
+                    model.setMadiachi(Integer.parseInt((String) jComboBox3.getSelectedItem()));
+                    
+		  return model;
+	  }        
+   
 }

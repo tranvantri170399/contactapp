@@ -6,6 +6,7 @@
 package controller;
 
 
+import helper.jdbcHelper;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.Connhanvien;
 import model.NhanVien;
 import service.NhanVienService;
 import service.NhanVienServiceiml;
@@ -36,13 +38,14 @@ import utlity.ClassTableModel;
  * @author Nguyễn Văn Tuấn
  */
 public class QuanLyNVController {
+    private int itq;
     private JPanel jpnView;
     private JButton btnAdd;
     private JTextField txtSearch;
     
     private NhanVienService nhanVienSercvice = null;
     
-    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ","DELETE"};
+    private String[] listcolumn = {"Mã NV","STT", "Tên NV", "Tài khoản", "Mật khẩu", "Admin", "RoleName", "Mã dự án", "Mã phòng", "Địa chỉ"};
     
     private TableRowSorter<TableModel> rowSorter = null;
     
@@ -94,9 +97,6 @@ public class QuanLyNVController {
             }
         });
         
-        table.getColumnModel().getColumn(0).setMinWidth(0);
-        table.getColumnModel().getColumn(0).setMaxWidth(0);
-        table.getColumnModel().getColumn(0).setPreferredWidth(0);
          
         table.getColumnModel().getColumn(1).setMinWidth(50);
         table.getColumnModel().getColumn(1).setMaxWidth(50);
@@ -126,7 +126,7 @@ public class QuanLyNVController {
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
-                    System.out.println(selectedRowIndex);
+                    //System.out.println(selectedRowIndex);
                     
                     NhanVien nhanVien = new NhanVien();
                     nhanVien.setMaNV((int) model.getValueAt(selectedRowIndex, 0));
@@ -147,7 +147,8 @@ public class QuanLyNVController {
                     frame.setResizable(false);
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
-                    System.out.println("");
+                    itq=1;
+                    System.out.println(""+itq);
                 }
             }
             
@@ -157,11 +158,14 @@ public class QuanLyNVController {
         btnAdd.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //System.out.println(""+itq);
                 NhanVienJFrame frame = new NhanVienJFrame(new NhanVien());
                 frame.setTitle("Thông tin nhân viên");
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
                 frame.setVisible(true);
+                
+                
             }
 
             @Override
@@ -173,6 +177,7 @@ public class QuanLyNVController {
             public void mouseExited(MouseEvent e) {
                  btnAdd.setBackground(new Color(100,221,23));
             }
+
             
             
 });

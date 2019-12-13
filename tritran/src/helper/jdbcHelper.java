@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,11 +66,13 @@ public class jdbcHelper {
             PreparedStatement st = prepareStatement(sql, args);
             try{
                 st.executeUpdate();
+                JOptionPane.showMessageDialog(null, "thanh cong");
             }finally{
                 st.getConnection().close();
             }
         }catch(SQLException e){
-            throw  new RuntimeException(e);
+            //throw  new RuntimeException(e);
+            e.printStackTrace();
         }
 }
     /*
