@@ -15,8 +15,10 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -52,6 +54,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 	private byte[] personimage;
         ByteArrayOutputStream bos;
         private String tt="";
+         private boolean rb;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,6 +96,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         btnsave = new javax.swing.JButton();
         mess = new javax.swing.JLabel();
         txttest = new javax.swing.JTextField();
+        btnupdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -275,6 +279,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnupdate.setText("Cập Nhật");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -286,7 +297,9 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                         .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnupdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -300,7 +313,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnsave)
-                        .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnupdate))
                     .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,16 +365,27 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblimageMouseClicked
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
-
-                 Connhanvien nv= getModel();
-                 String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                    jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
-                            nv.getRoleID(),
-                            nv.getMaduan(),
-                            nv.getMaphongban(),
-                            nv.getMadiachi());
-                
+        Connhanvien nv= getModel();
+        String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+           jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
+                   nv.getRoleID(),
+                   nv.getMaduan(),
+                   nv.getMaphongban(),
+                   nv.getMadiachi());
+           
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+       if (jRadioButton1.isSelected()) {
+            boolean rb=true;
+        }else{
+               rb=false;
+           }
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String date= sdf.format(jDateChooser1.getDate());
+        String sqlimg="INSERT INTO Image (imageID, EmployeeID,image, gioitinh, ngaysinh) VALUES (?, ?, ?, ?, ?)";
+           jdbcHelper.executeUpdate(sqlimg,txtmanv.getText(),txtmanv.getText(),personimage,rb,date);
+    }//GEN-LAST:event_btnupdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,6 +394,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsave;
+    private javax.swing.JButton btnupdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> jComboBox1;
