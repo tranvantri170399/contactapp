@@ -22,6 +22,7 @@ import java.util.logging.SimpleFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JTextField;
 import model.Connhanvien;
 import model.NhanVien;
 import model.Project;
@@ -32,6 +33,8 @@ import model.chucvu;
  * @author Nguyễn Văn Tuấn
  */
 public class NhanVienJFrame extends javax.swing.JFrame {
+
+    private JTextField txttest;
 
     /**
      * Creates new form HocVienJFrame

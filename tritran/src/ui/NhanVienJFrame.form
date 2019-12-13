@@ -58,13 +58,11 @@
                       <Group type="102" attributes="0">
                           <Component id="mess" min="-2" pref="200" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-<<<<<<< HEAD
+
                           <Component id="txttest" min="-2" pref="63" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-=======
->>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
                           <Component id="btnsave" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
@@ -81,15 +79,12 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-<<<<<<< HEAD
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnsave" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txttest" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnupdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-=======
                       <Component id="btnsave" min="-2" max="-2" attributes="0"/>
->>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
                       <Component id="mess" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -451,7 +446,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="mess">
         </Component>
-<<<<<<< HEAD
         <Component class="javax.swing.JTextField" name="txttest">
         </Component>
         <Component class="javax.swing.JButton" name="btnupdate">
@@ -462,8 +456,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnupdateActionPerformed"/>
           </Events>
         </Component>
-=======
->>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
       </SubComponents>
     </Container>
   </SubComponents>
