@@ -56,9 +56,9 @@ public class DiaChiDAOiml implements DiaChiDAO{
     public int createOrUpdate(DiaChi diaChi) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public static void main(String[] args) {
-        DiaChiDAO diaChiDAO = new DiaChiDAOiml();
-        System.out.println(diaChiDAO.getList());
-    }
+//    public static void main(String[] args) {
+//        DiaChiDAO diaChiDAO = new DiaChiDAOiml();
+//        System.out.println(diaChiDAO.getList());
+//    }
     
 }
