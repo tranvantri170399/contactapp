@@ -30,8 +30,9 @@ public class ClassTableModelDC {
                 DiaChi diaChi = listItem.get(i);
                 obj = new Object[columns];
                 obj[0] = (i+1);
-                obj[2] = diaChi.getLocationID();
-                obj[3] = diaChi.getLocationName();
+                obj[1] = diaChi.getLocationID();
+                obj[2] = diaChi.getLocationName();
+                obj[3] = diaChi.getLocationAllowance();
                 obj[4] = diaChi.getNumOfEmployee();
                 dtm.addRow(obj);
             }

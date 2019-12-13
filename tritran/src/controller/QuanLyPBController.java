@@ -6,9 +6,13 @@
 package controller;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +26,7 @@ import javax.swing.table.TableRowSorter;
 import model.PhongBan;
 import service.PhongBanService;
 import service.PhongBanServiceiml;
+import ui.PhongBanJFrame;
 import utlity.ClassTableModelDA;
 import utlity.ClassTableModelPB;
 
@@ -32,7 +37,7 @@ import utlity.ClassTableModelPB;
 public class QuanLyPBController {
      private JPanel jpnView;
     private JTextField txtSearch;
-    
+    private JButton btnadd;
     
     private PhongBanService phongBanService = null;
     
@@ -43,9 +48,11 @@ public class QuanLyPBController {
     public  QuanLyPBController(){    
     }
 
-    public QuanLyPBController(JPanel jpnView, JTextField txtSearch) {
+    public QuanLyPBController(JPanel jpnView, JTextField txtSearch,JButton btnadd) {
         this.jpnView = jpnView;
         this.txtSearch = txtSearch;
+        this.btnadd = btnadd;
+        
         this.phongBanService = new PhongBanServiceiml();
     }
     public void setDateToTable(){
@@ -105,6 +112,53 @@ public class QuanLyPBController {
         jpnView.add(scrollPane);
         jpnView.validate();
         jpnView.repaint();
+        
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount()==2 && table.getSelectedRow() != -3){
+                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                    
+                    PhongBan phongBan = new PhongBan();
+                    phongBan.setDepartmentID((int) model.getValueAt(selectedRowIndex, 1));
+                    phongBan.setDepartmentName(model.getValueAt(selectedRowIndex, 2).toString());
+                    
+                    PhongBanJFrame frame = new PhongBanJFrame(phongBan);
+                    frame.setTitle("Thông Tin Phòng Ban");
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                    
+                }
+            }
+            
+        });
 }
+    public void setEvent(){
+        btnadd.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                PhongBanJFrame frame = new PhongBanJFrame(new PhongBan());
+                    frame.setTitle("Thông Tin Phòng Ban");
+                    frame.setLocationRelativeTo(null);
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnadd.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnadd.setBackground(new Color(100,221,23));
+            }
+            
+            
+        });
+    }
 }
 

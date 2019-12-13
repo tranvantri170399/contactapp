@@ -95,8 +95,11 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         btnsave = new javax.swing.JButton();
         mess = new javax.swing.JLabel();
+<<<<<<< HEAD
         txttest = new javax.swing.JTextField();
         btnupdate = new javax.swing.JButton();
+=======
+>>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -296,10 +299,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                         .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(btnupdate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+=======
+>>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
                         .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -311,10 +317,14 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+<<<<<<< HEAD
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnsave)
                         .addComponent(txttest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnupdate))
+=======
+                    .addComponent(btnsave)
+>>>>>>> 1083855be1af54a4cf5e14ab0853437942b6c13f
                     .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,7 +435,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtmanv;
     private javax.swing.JTextField txtmatkhau;
     private javax.swing.JTextField txttaikhoan;
-    private javax.swing.JTextField txttest;
     // End of variables declaration//GEN-END:variables
     	
                     public  chucvu m= new chucvu();
@@ -522,7 +531,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 ps.setString(1,tt);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                   this.txttest.setText(rs.getString("RoleID"));
                    ID=(Integer.parseInt(rs.getString("RoleID")));
                 }
                 ps.close();
