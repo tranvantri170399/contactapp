@@ -51,14 +51,15 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         fillComboBox3();
         fillComboBox4();
         Connhanvien nv=getModel();
-        loadimage();
-        setimage();
+//        loadimage();
+//        setimage();
     }
     	private String filename=null;
 	private byte[] personimage;
         ByteArrayOutputStream bos;
         private String tt="";
          private boolean rb;
+        private String name ;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,6 +136,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setText("Mã địa chỉ");
 
+        txtmanv.setEditable(false);
         txtmanv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtmanvActionPerformed(evt);
@@ -365,28 +367,56 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_lblimageMouseClicked
-
+    
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
-        Connhanvien nv= getModel();
-        String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-           jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
+
+           String tk= txttaikhoan.getText();
+           int EID=0;
+        if (mode==1) {
+                Connhanvien nv= getModel();
+                String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                   jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
                    nv.getRoleID(),
                    nv.getMaduan(),
                    nv.getMaphongban(),
-                   nv.getMadiachi());
-           
+                   nv.getMadiachi()); 
+                
+                
+                 try{
+                        name = txttaikhoan.getText();
+                        System.out.println(""+name);
+                        Connection cons = jdbcHelper.getConnection();
+                        String sql2 ="select EmployeeID from Employees where Username=?";
+                        PreparedStatement ps = cons.prepareCall(sql2);
+                        ps.setString(1,name);
+                        ResultSet rs = ps.executeQuery();
+                        while(rs.next()){
+                           EID=(Integer.parseInt(rs.getString("EmployeeID")));
+                        }
+                        System.out.println("so id: "+EID);
+                        ps.close();
+                        rs.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                
+                if (jRadioButton1.isSelected()) {
+                 boolean rb=true;
+                }else{
+                       rb=false;
+                   }
+                SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+                String date= sdf.format(jDateChooser1.getDate());
+                String sqlimg="INSERT INTO Image (imageID, EmployeeID,image, gioitinh, ngaysinh) VALUES (?, ?, ?, ?, ?)";
+                   jdbcHelper.executeUpdate(sqlimg,EID,EID,personimage,rb,date);
+        }else{
+            System.out.println("ko thanh cong");
+        }
+   
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-       if (jRadioButton1.isSelected()) {
-            boolean rb=true;
-        }else{
-               rb=false;
-           }
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-        String date= sdf.format(jDateChooser1.getDate());
-        String sqlimg="INSERT INTO Image (imageID, EmployeeID,image, gioitinh, ngaysinh) VALUES (?, ?, ?, ?, ?)";
-           jdbcHelper.executeUpdate(sqlimg,txtmanv.getText(),txtmanv.getText(),personimage,rb,date);
+       
     }//GEN-LAST:event_btnupdateActionPerformed
 
     /**
@@ -532,6 +562,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+        private int mode=0;
+        public void loadeid(){
+            mode=1;
+            System.out.println("co: "+mode);
+        }
+        
+        
         
         public void fillComboBox4(){
             try{

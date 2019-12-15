@@ -147,6 +147,8 @@ public class QuanLyNVController {
                     frame.setResizable(false);
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
+                    frame.loadimage();
+                    frame.setimage();
                 }
             }
             
@@ -161,7 +163,7 @@ public class QuanLyNVController {
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
                 frame.setVisible(true);
-                
+                frame.loadeid();
                 
             }
 
