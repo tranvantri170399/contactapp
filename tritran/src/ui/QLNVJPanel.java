@@ -46,7 +46,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
         btnAdd.setBorder(null);
 
         txtSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtSearch.setForeground(new java.awt.Color(204, 204, 204));
+        txtSearch.setForeground(new java.awt.Color(51, 51, 51));
         txtSearch.setText("Username");
         txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -115,7 +115,13 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
     private void txtSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseExited
         // TODO add your handling code here:
-        txtSearch.setText("Username");
+        String t= txtSearch.getText();
+        if (t.length()==0) {
+            txtSearch.setText(" ");
+        }else{
+            txtSearch.setText(" ");
+        }
+        
     }//GEN-LAST:event_txtSearchMouseExited
 
 

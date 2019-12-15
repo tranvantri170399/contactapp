@@ -24,6 +24,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import model.Connhanvien;
+import model.Image;
 import model.NhanVien;
 import model.Project;
 import model.chucvu;
@@ -50,8 +51,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         fillComboBox3();
         fillComboBox4();
         Connhanvien nv=getModel();
-        
-
+        loadimage();
+        setimage();
     }
     	private String filename=null;
 	private byte[] personimage;
@@ -141,6 +142,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rboql);
+        rboql.setSelected(true);
         rboql.setText("Quản lý");
 
         buttonGroup1.add(rbonv);
@@ -158,6 +160,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jLabel12.setText("Gioi Tinh");
 
         buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("nam");
 
         buttonGroup2.add(jRadioButton2);
@@ -566,6 +569,51 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     model.setMadiachi(Integer.parseInt((String) jComboBox3.getSelectedItem()));
                     
 		  return model;
-	  }        
-   
+	  }    
+        Image iml=new Image();  
+        public void loadimage(){
+                try{
+                    Connection cons = jdbcHelper.getConnection();
+                    String sql ="SELECT [imageID]\n" +
+                        "      ,[EmployeeID]\n" +
+                        "      ,[image]\n" +
+                        "      ,[gioitinh]\n" +
+                        "      ,[ngaysinh]\n" +
+                        "  FROM [EmployeeTransferManagement2019].[dbo].[Image] WHERE EmployeeID=?";
+                    int id=Integer.parseInt(txtmanv.getText());
+                    System.out.println(""+id);
+                    List <Image> list = new ArrayList<>();
+                    PreparedStatement ps = cons.prepareCall(sql);
+                    ps.setInt(1,id);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()){
+                       // Image nv = new Image();
+                        iml.setImageID(rs.getInt("imageID"));
+                        iml.setEmployeeID(rs.getInt("EmployeeID"));
+                        iml.setImage(rs.getBytes("image"));
+                        iml.setGioitinh(rs.getBoolean("gioitinh"));
+                        iml.setNgaysinh(rs.getDate("ngaysinh"));
+                        list.add(iml);
+                    }
+                    ps.close();
+                            rs.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+          }
+   public void setimage(){
+       
+      // Image iml=new Image();
+       byte[] img = (iml.getImage());
+		 ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(lblimage.getWidth(), lblimage.getHeight(),java.awt.Image.SCALE_SMOOTH));
+		 lblimage.setIcon(imageIcon);
+		 personimage=img;
+        jDateChooser1.setDate(iml.getNgaysinh());
+        boolean bl=iml.isGioitinh();
+        if (bl==true) {
+           jRadioButton1.isSelected();
+       }else{
+            jRadioButton2.isSelected();
+        }
+   }
 }
