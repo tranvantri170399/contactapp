@@ -101,7 +101,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         btnsave = new javax.swing.JButton();
         mess = new javax.swing.JLabel();
-        btnupdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -287,13 +286,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnupdate.setText("Cập Nhật");
-        btnupdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnupdateActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -304,8 +296,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnupdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -317,9 +307,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnsave)
-                        .addComponent(btnupdate))
+                    .addComponent(btnsave)
                     .addComponent(mess, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,17 +399,33 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 String date= sdf.format(jDateChooser1.getDate());
                 String sqlimg="INSERT INTO Image (imageID, EmployeeID,image, gioitinh, ngaysinh) VALUES (?, ?, ?, ?, ?)";
                    jdbcHelper.executeUpdate(sqlimg,EID,EID,personimage,rb,date);
-                   JOptionPane.showMessageDialog(null,"thanh cong");
+                   JOptionPane.showMessageDialog(null,"luu thanh cong");
         }else{
            // chổ này viết lệnh cập nhật
-            System.out.println("ko thanh cong");
+            Connhanvien nv= getModel();
+            //String sqql="UPDATE ChuyenDe SET TenCD=?, HocPhi=?, ThoiLuong=?, Hinh=?, MoTa=? WHERE MaCD=?";
+                String sql="UPDATE Employees SET EmployeeName=?, Username=?, Password=?, IsSystemAdmin=?, RoleID=?,ProjectID=?,DepartmentID=?,LocationID=? WHERE EmployeeID=?";
+                   jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
+                   nv.getRoleID(),
+                   nv.getMaduan(),
+                   nv.getMaphongban(),
+                   nv.getMadiachi(),
+                   txtmanv.getText()); 
+                
+               
+                if (jRadioButton1.isSelected()) {
+                 boolean rb=true;
+                }else{
+                       rb=false;
+                   }
+                SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+                String date= sdf.format(jDateChooser1.getDate());
+                String sqlimg="UPDATE Image SET imageID=?,image=?, gioitinh=?, ngaysinh=? WHERE EmployeeID=?";
+                   jdbcHelper.executeUpdate(sqlimg,EID,personimage,rb,date,txtmanv.getText());
+                   JOptionPane.showMessageDialog(null,"cap nhat thanh cong");
         }
   
     }//GEN-LAST:event_btnsaveActionPerformed
-
-    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-       
-    }//GEN-LAST:event_btnupdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +434,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsave;
-    private javax.swing.JButton btnupdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> jComboBox1;
