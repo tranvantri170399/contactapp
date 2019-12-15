@@ -263,7 +263,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             if(nhanVien != null){ 
                 String matKhau2 = nhanVien.getPassWord(); 
                 if(matKhau.equals(matKhau2)){ 
-                  //  ShareHelper.USER = nhanVien; 
+//                    ShareHelper.USER = nhanVien; 
                     DialogHelper.alert(this, "Đăng nhập thành công!"); 
 //                    Main mn = new Main();
 //                    mn.setVisible(true);
