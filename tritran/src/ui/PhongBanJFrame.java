@@ -21,6 +21,7 @@ public class PhongBanJFrame extends javax.swing.JFrame {
         initComponents();
         PhongBanController controller = new PhongBanController(btnsave, txtmada, txttenda, lblmess);
         controller.setView(phongBan);
+        controller.setEvent();
     }
 
     /**

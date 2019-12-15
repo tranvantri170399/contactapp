@@ -98,9 +98,9 @@ public class QuanLyNVController {
         });
         
          
-        table.getColumnModel().getColumn(1).setMinWidth(50);
-        table.getColumnModel().getColumn(1).setMaxWidth(50);
-        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        table.getColumnModel().getColumn(1).setMinWidth(0);
+        table.getColumnModel().getColumn(1).setMaxWidth(0);
+        table.getColumnModel().getColumn(1).setPreferredWidth(0);
         
         
         table.getTableHeader().setFont(new Font("Arrial",Font.BOLD,14));
@@ -122,7 +122,7 @@ public class QuanLyNVController {
         table.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getClickCount()==2 && table.getSelectedRow() != -3){
+                if(e.getClickCount()==2 && table.getSelectedRow() != -1){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);

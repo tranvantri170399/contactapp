@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.PhongBan;
+import service.PhongBanService;
+import service.PhongBanServiceiml;
 
 /**
  *
@@ -24,6 +26,8 @@ public class PhongBanController {
     private JLabel mess;
     
     private PhongBan phongBan = null;
+    
+    private PhongBanService phongBanService = null;
 
     public PhongBanController() {
     }
@@ -33,6 +37,8 @@ public class PhongBanController {
         this.txtmapb = txtmapb;
         this.txttenpb = txttenpb;
         this.mess = mess;
+        
+        this.phongBanService = new PhongBanServiceiml();
     }
     
     public void setView(PhongBan phongBan){
@@ -40,20 +46,25 @@ public class PhongBanController {
         txtmapb.setText("" +phongBan.getDepartmentID());
         txttenpb.setText(phongBan.getDepartmentName());
     }
-//    public void setEvent(){
-//        btnsave.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                if(txtmapb.getText().length()==0){
-//                    mess.setText("Vui lòng điền thông tin bắt buộc !");
-//                }else{
-//                    phongBan.setDepartmentID(Integer.parseInt(txtmapb.getText()));
-//                    phongBan.setDepartmentName(txttenpb.getText());
-//                     mess.setText("Cập nhật thành công");
-////                    }
-//                }
-//            }
-//            
-//        });
-//    }
+    public void setEvent(){
+        btnsave.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(txttenpb.getText().length()==0){
+                    mess.setText("Vui lòng điền thông tin bắt buộc !");
+                }else{
+                    phongBan.setDepartmentName(txttenpb.getText());
+                    int lastID = phongBanService.createOrUpdate(phongBan);
+                    if(lastID != 0){
+                    phongBan.setDepartmentID(lastID);
+                    txtmapb.setText("" + phongBan.getDepartmentID());
+                    mess.setText("OK");                   
+                }else{
+                        mess.setText("có lỗi vui lòng thử lại");
+                    }
+                }
+            }
+            
+        });
+    }
 }

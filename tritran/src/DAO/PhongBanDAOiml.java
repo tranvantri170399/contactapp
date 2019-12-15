@@ -52,7 +52,32 @@ public class PhongBanDAOiml implements PhongBanDAO{
 
     @Override
     public int createOrUpdate(PhongBan phongBan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      try{
+            Connection cons = jdbcHelper.getConnection();
+            String sql = "update Departments \n" +
+"set DepartmentName = ?\n" +
+"where DepartmentID = ?\n" +
+"\n" +
+"if @@ROWCOUNT = 0\n" +
+"  insert into Departments(DepartmentID,DepartmentName)\n" +
+"  VALUES (?,?)";
+//            String sql = "insert into Departments(DepartmentID,DepartmentName) VALUES (?,?) ON DUPLICATE KEY UPDATE DepartmentName = VALUES(DepartmentName)";
+            PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, phongBan.getDepartmentID());
+            ps.setString(2, phongBan.getDepartmentName());
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            int generatedKey = 3;
+            if (rs.next()) {
+                generatedKey = rs.getInt(1);
+            }
+            ps.close();
+            cons.close();
+            return generatedKey;
+      }catch(Exception e){
+          e.printStackTrace();
+      }
+      return 0;
     }
     public static void main(String[] args) {
         PhongBanDAO phongBanDAO = new PhongBanDAOiml();
