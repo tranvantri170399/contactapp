@@ -14,7 +14,9 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -41,7 +43,10 @@ public class QuanLyNVController {
     private int itq;
     private JPanel jpnView;
     private JButton btnAdd;
+    private JButton btnxoa;
     private JTextField txtSearch;
+    private int index;
+    private int macd;
     
     private NhanVienService nhanVienSercvice = null;
     
@@ -52,10 +57,11 @@ public class QuanLyNVController {
     public QuanLyNVController() {
     }
 
-    public QuanLyNVController(JPanel jpnView, JButton btnAdd, JTextField txtSearch) {
+    public QuanLyNVController(JPanel jpnView, JButton btnAdd, JTextField txtSearch,JButton btnxoa) {
         this.jpnView = jpnView;
         this.btnAdd = btnAdd;
         this.txtSearch = txtSearch;
+        this.btnxoa=btnxoa;
         
         this.nhanVienSercvice = new NhanVienServiceiml();
     }
@@ -122,6 +128,13 @@ public class QuanLyNVController {
         table.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount()==1) {
+                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                    macd = (int) model.getValueAt(selectedRowIndex, 0);
+                }
+
                 if(e.getClickCount()==2 && table.getSelectedRow() != -3){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
@@ -149,6 +162,8 @@ public class QuanLyNVController {
                     frame.setLocationRelativeTo(null);
                     frame.loadimage();
                     frame.setimage();
+                    
+                    
                 }
             }
             
@@ -178,7 +193,34 @@ public class QuanLyNVController {
             }
 
             
+  
+});
+    }
+    public void delete(){
+            btnxoa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String sql="DELETE FROM Image WHERE EmployeeID=?";
+		 jdbcHelper.executeUpdate(sql, macd);
+                 System.out.println(""+macd);
+                 
+                String sqll="DELETE FROM Employees WHERE EmployeeID=?";
+		 jdbcHelper.executeUpdate(sqll, macd); 
+                 JOptionPane.showMessageDialog(null,"xoa thanh cong :))");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnxoa.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnxoa.setBackground(new Color(100,221,23));
+            }
+
             
+  
 });
     }
 }
