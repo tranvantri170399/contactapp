@@ -5,6 +5,10 @@
  */
 package ui;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  *
  * @author Nguyễn Văn Tuấn
@@ -16,6 +20,26 @@ public class TCJPanel extends javax.swing.JPanel {
      */
     public TCJPanel() {
         initComponents();
+        
+        new Thread(){
+        @Override
+        public void run() {
+         while(true){
+             try {
+                 Date now=new Date();
+                 SimpleDateFormat sim=new SimpleDateFormat();
+                 sim.applyPattern("hh:mm:ss aa");
+                 String time =sim.format(now);
+                 lbldongho.setText(time);
+                 Thread.sleep(1000);
+             
+             } catch (Exception ex) {
+                break;
+             }    
+    }
+    }
+  }.start();
+        date();
     }
 
     /**
@@ -29,6 +53,9 @@ public class TCJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lbldongho = new javax.swing.JLabel();
+        lbldate = new javax.swing.JLabel();
 
         jButton1.setText("Đổi Mk");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -37,20 +64,45 @@ public class TCJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Alarm.png"))); // NOI18N
+
+        lbldongho.setText("11:00:00PM");
+        lbldongho.setPreferredSize(new java.awt.Dimension(40, 20));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(lbldate, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbldongho, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
                 .addComponent(jButton1)
-                .addGap(0, 505, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jButton1)
-                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbldongho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(lbldate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -72,6 +124,18 @@ public class TCJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbldate;
+    private javax.swing.JLabel lbldongho;
     // End of variables declaration//GEN-END:variables
+
+    public void date(){
+    String pattenrn = "dd/mm/yyyy";
+    String pattenrn3="EEEEE,dd-MMMMM yyyy ";
+    String pattenrn4="dd-MM-yy";
+    SimpleDateFormat dateFormat = new SimpleDateFormat(pattenrn3,new Locale("vi","VN"));
+//        System.out.println(dateFormat.format(new Date()));
+        lbldate.setText(dateFormat.format(new Date()));
+    }
 }
