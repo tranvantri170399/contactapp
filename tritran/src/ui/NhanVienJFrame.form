@@ -58,8 +58,6 @@
                       <Group type="102" attributes="0">
                           <Component id="mess" min="-2" pref="200" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnsave" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
@@ -76,10 +74,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnsave" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnupdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnsave" min="-2" max="-2" attributes="0"/>
                       <Component id="mess" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -445,14 +440,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="mess">
-        </Component>
-        <Component class="javax.swing.JButton" name="btnupdate">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnupdateActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
