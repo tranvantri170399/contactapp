@@ -54,14 +54,12 @@ public class PhongBanDAOiml implements PhongBanDAO{
     public int createOrUpdate(PhongBan phongBan) {
       try{
             Connection cons = jdbcHelper.getConnection();
-            String sql = "update Departments \n" +
-"set DepartmentName = ?\n" +
-"where DepartmentID = ?\n" +
-"\n" +
-"if @@ROWCOUNT = 0\n" +
-"  insert into Departments(DepartmentID,DepartmentName)\n" +
-"  VALUES (?,?)";
-//            String sql = "insert into Departments(DepartmentID,DepartmentName) VALUES (?,?) ON DUPLICATE KEY UPDATE DepartmentName = VALUES(DepartmentName)";
+           String sql = "  UPDATE Departments WITH (SERIALIZABLE)\n" +
+"        SET DepartmentName = ?\n" +
+"        WHERE DepartmentID = ?\n" +
+"        IF @@rowcount = 0\n" +
+"            INSERT INTO Departments(DepartmentID, DepartmentName)\n" +
+"                  VALUES (?, ?);";
             PreparedStatement ps = cons.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setInt(1, phongBan.getDepartmentID());
             ps.setString(2, phongBan.getDepartmentName());

@@ -66,7 +66,7 @@ public class jdbcHelper {
             PreparedStatement st = prepareStatement(sql, args);
             try{
                 st.executeUpdate();
-                JOptionPane.showMessageDialog(null, "thanh cong");
+               // JOptionPane.showMessageDialog(null, "thanh cong");
             }finally{
                 st.getConnection().close();
             }

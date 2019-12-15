@@ -122,7 +122,7 @@ public class QuanLyNVController {
         table.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getClickCount()==2 && table.getSelectedRow() != -1){
+                if(e.getClickCount()==2 && table.getSelectedRow() != -3){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);

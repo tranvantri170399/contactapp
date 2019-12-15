@@ -22,6 +22,7 @@ import java.util.logging.SimpleFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Connhanvien;
 import model.Image;
@@ -373,6 +374,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
            String tk= txttaikhoan.getText();
            int EID=0;
         if (mode==1) {
+            // khúc này là lệnh lưu
                 Connhanvien nv= getModel();
                 String sql="INSERT INTO Employees (EmployeeName, Username, Password, IsSystemAdmin, RoleID,ProjectID,DepartmentID,LocationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                    jdbcHelper.executeUpdate(sql,nv.getTenNV(),nv.getUsername(),nv.getPassWord(),nv.isAdmin(),
@@ -409,10 +411,12 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 String date= sdf.format(jDateChooser1.getDate());
                 String sqlimg="INSERT INTO Image (imageID, EmployeeID,image, gioitinh, ngaysinh) VALUES (?, ?, ?, ?, ?)";
                    jdbcHelper.executeUpdate(sqlimg,EID,EID,personimage,rb,date);
+                   JOptionPane.showMessageDialog(null,"thanh cong");
         }else{
+           // chổ này viết lệnh cập nhật
             System.out.println("ko thanh cong");
         }
-   
+  
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
