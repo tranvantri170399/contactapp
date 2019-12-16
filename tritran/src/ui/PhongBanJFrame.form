@@ -78,7 +78,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="D&#x1ef1; &#xc1;n">
+                <TitledBorder title="Ph&#xf2;ng Ban">
                   <Font PropertyName="font" name="Times New Roman" size="18" style="0"/>
                 </TitledBorder>
               </Border>
@@ -136,17 +136,20 @@
             <Component class="javax.swing.JLabel" name="lblmess">
             </Component>
             <Component class="javax.swing.JTextField" name="txtmada">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txttenda">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="M&#xe3; d&#x1ef1; &#xe1;n"/>
+                <Property name="text" type="java.lang.String" value="M&#xe3; Ph&#xf2;ng Ban"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xea;n d&#x1ef1; &#xe1;n"/>
+                <Property name="text" type="java.lang.String" value="T&#xea;n Ph&#xf2;ng Ban"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -155,6 +158,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="SAVE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsaveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

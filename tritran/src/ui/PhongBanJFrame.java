@@ -6,6 +6,8 @@
 package ui;
 
 import controller.PhongBanController;
+import helper.jdbcHelper;
+import javax.swing.JOptionPane;
 import model.PhongBan;
 
 /**
@@ -47,11 +49,13 @@ public class PhongBanJFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dự Án", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Phòng Ban", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
 
-        jLabel1.setText("Mã dự án");
+        txtmada.setEditable(false);
 
-        jLabel2.setText("Tên dự án");
+        jLabel1.setText("Mã Phòng Ban");
+
+        jLabel2.setText("Tên Phòng Ban");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -91,6 +95,11 @@ public class PhongBanJFrame extends javax.swing.JFrame {
         );
 
         btnsave.setText("SAVE");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,6 +139,19 @@ public class PhongBanJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+        if (mode==1) {
+            String sqlDA="INSERT INTO Departments (DepartmentName) VALUES (?)";
+            jdbcHelper.executeUpdate(sqlDA,txttenda.getText());
+            JOptionPane.showMessageDialog(null,"Lưu Thanh Công");
+        }else{
+             String sql="UPDATE Projects SET DepartmentName=? WHERE DepartmentID=?";
+                   jdbcHelper.executeUpdate(sql,txttenda.getText(),txtmada.getText()); 
+            JOptionPane.showMessageDialog(null,"Cập Nhật Thành Công");
+        }
+    }//GEN-LAST:event_btnsaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -145,4 +167,9 @@ public class PhongBanJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtmada;
     private javax.swing.JTextField txttenda;
     // End of variables declaration//GEN-END:variables
+            private int mode=0;
+        public void loadeid(){
+            mode=1;
+            System.out.println("co: "+mode);
+        }
 }

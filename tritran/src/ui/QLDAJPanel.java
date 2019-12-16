@@ -18,9 +18,10 @@ public class QLDAJPanel extends javax.swing.JPanel {
      */
     public QLDAJPanel() {
         initComponents();
-        QuanLyDAController controller = new QuanLyDAController(jpnView, txtSearch, btnadd);
+        QuanLyDAController controller = new QuanLyDAController(jpnView, txtSearch, btnadd,btnxoa);
         controller.setDateToTable();
         controller.setEvent();
+        controller.setdelete();
                 }
 
     /**
@@ -36,6 +37,7 @@ public class QLDAJPanel extends javax.swing.JPanel {
         jpnView = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         btnadd = new javax.swing.JButton();
+        btnxoa = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(600, 500));
 
@@ -62,6 +64,8 @@ public class QLDAJPanel extends javax.swing.JPanel {
 
         btnadd.setText("Thêm mới");
 
+        btnxoa.setText("Xóa");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -70,7 +74,9 @@ public class QLDAJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                .addComponent(btnxoa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnadd)
                 .addContainerGap())
         );
@@ -80,21 +86,22 @@ public class QLDAJPanel extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnadd))
+                    .addComponent(btnadd)
+                    .addComponent(btnxoa))
                 .addGap(18, 18, 18)
                 .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,6 +112,7 @@ public class QLDAJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd;
+    private javax.swing.JButton btnxoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpnView;
     private javax.swing.JTextField txtSearch;

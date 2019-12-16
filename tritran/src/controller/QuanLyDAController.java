@@ -5,13 +5,16 @@
  */
 package controller;
 
+import helper.jdbcHelper;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -38,7 +41,8 @@ public class QuanLyDAController {
     private JPanel jpnView;
     private JTextField txtSearch;
     private JButton btnadd;
-    
+    private JButton btnxoa;
+    private int macd;
     private DuAnService duanservice = null;
     
     private String[] listcolumn = {"STT","Mã Project","ProjectName","Số NV"};
@@ -47,9 +51,10 @@ public class QuanLyDAController {
     public  QuanLyDAController(){    
     }
     
-    public QuanLyDAController(JPanel jpnView, JTextField txtSearch,JButton btnadd) {
+    public QuanLyDAController(JPanel jpnView, JTextField txtSearch,JButton btnadd,JButton btnxoa) {
         this.jpnView = jpnView;
         this.txtSearch = txtSearch;
+        this.btnxoa=btnxoa;
         this.btnadd = btnadd;
         
         this.duanservice = new DuAnServiceiml();
@@ -115,6 +120,13 @@ public class QuanLyDAController {
         table.addMouseListener(new MouseAdapter() {
                @Override
                public void mouseClicked(MouseEvent e) {
+                   if (e.getClickCount()==1) {
+                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                    macd = (int) model.getValueAt(selectedRowIndex, 1);
+                }
+                   
                    if(e.getClickCount()==2 && table.getSelectedRow() != -3){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
@@ -144,10 +156,35 @@ public class QuanLyDAController {
                     frame.setResizable(false);
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
+                    frame.loadeid();
                 }
                 
             });
         }
+        
+        public void setdelete(){
+            btnxoa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String sql="DELETE FROM Projects WHERE ProjectID=?";
+		 jdbcHelper.executeUpdate(sql, macd);
+                 System.out.println(""+macd);
+                 setDateToTable();
+            }
 
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnxoa.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnxoa.setBackground(new Color(100,221,23));
+            }
+
+            
+  
+});
+        }
 
 }
