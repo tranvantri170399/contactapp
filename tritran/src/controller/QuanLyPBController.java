@@ -5,6 +5,7 @@
  */
 package controller;
 
+import helper.jdbcHelper;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -38,9 +40,9 @@ public class QuanLyPBController {
      private JPanel jpnView;
     private JTextField txtSearch;
     private JButton btnadd;
-    
+    private JButton btnxoa;
     private PhongBanService phongBanService = null;
-    
+    private int macd;
     private String[] listcolumn = {"STT","Mã Phòng Ban","Tên Phòng", "Số NV"};
     
     private TableRowSorter<TableModel> rowSorter = null;
@@ -48,11 +50,11 @@ public class QuanLyPBController {
     public  QuanLyPBController(){    
     }
 
-    public QuanLyPBController(JPanel jpnView, JTextField txtSearch,JButton btnadd) {
+    public QuanLyPBController(JPanel jpnView, JTextField txtSearch,JButton btnadd,JButton btnxoa) {
         this.jpnView = jpnView;
         this.txtSearch = txtSearch;
         this.btnadd = btnadd;
-        
+        this.btnxoa= btnxoa;
         this.phongBanService = new PhongBanServiceiml();
     }
     public void setDateToTable(){
@@ -116,6 +118,12 @@ public class QuanLyPBController {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount()==1) {
+                    DefaultTableModel model =  (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                    macd = (int) model.getValueAt(selectedRowIndex, 1);
+                }
                 if(e.getClickCount()==2 && table.getSelectedRow() != -3){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
@@ -145,6 +153,7 @@ public class QuanLyPBController {
                     frame.setLocationRelativeTo(null);
                     frame.setResizable(false);
                     frame.setVisible(true);
+                    frame.loadeid();
             }
 
             @Override
@@ -160,5 +169,30 @@ public class QuanLyPBController {
             
         });
     }
+    
+    public void setdelete(){
+            btnxoa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String sql="DELETE FROM Departments WHERE DepartmentID=?";
+		 jdbcHelper.executeUpdate(sql, macd);
+                 JOptionPane.showMessageDialog(null,"Xóa Thành Công");
+                 setDateToTable();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnxoa.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnxoa.setBackground(new Color(100,221,23));
+            }
+
+            
+  
+});
+        }
 }
 

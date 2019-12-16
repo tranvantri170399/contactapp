@@ -125,7 +125,7 @@ public class QuanLyDAController {
                     int selectedRowIndex = table.getSelectedRow();
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
                     macd = (int) model.getValueAt(selectedRowIndex, 1);
-                }
+                    }
                    
                    if(e.getClickCount()==2 && table.getSelectedRow() != -3){
                     DefaultTableModel model =  (DefaultTableModel) table.getModel();
@@ -169,6 +169,7 @@ public class QuanLyDAController {
                 String sql="DELETE FROM Projects WHERE ProjectID=?";
 		 jdbcHelper.executeUpdate(sql, macd);
                  System.out.println(""+macd);
+                 JOptionPane.showMessageDialog(null,"Xóa Thành Công");
                  setDateToTable();
             }
 

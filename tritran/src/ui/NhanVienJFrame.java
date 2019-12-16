@@ -59,6 +59,9 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 	private byte[] personimage;
         ByteArrayOutputStream bos;
         private String tt="";
+        private String tt1="";
+        private String tt2="";
+        private String tt3="";
          private boolean rb;
         private String name ;
     /**
@@ -470,12 +473,12 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     public void fillComboBox(){
             try{
                 Connection cons = jdbcHelper.getConnection();
-                String sql ="select ProjectID from Projects";
+                String sql ="select ProjectName from Projects";
                // List <IDduan> list = new ArrayList<>();
                 PreparedStatement ps = cons.prepareCall(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                   this.jComboBox1.addItem(rs.getString("ProjectID"));
+                   this.jComboBox1.addItem(rs.getString("ProjectName"));
                 }
                 ps.close();
                 rs.close();
@@ -488,12 +491,12 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         public void fillComboBox2(){
             try{
                 Connection cons = jdbcHelper.getConnection();
-                String sql ="select DepartmentID from Departments";
+                String sql ="select DepartmentName from Departments";
                // List <IDduan> list = new ArrayList<>();
                 PreparedStatement ps = cons.prepareCall(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                   this.jComboBox2.addItem(rs.getString("DepartmentID"));
+                   this.jComboBox2.addItem(rs.getString("DepartmentName"));
                 }
                 ps.close();
                 rs.close();
@@ -507,12 +510,12 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         public void fillComboBox3(){
             try{
                 Connection cons = jdbcHelper.getConnection();
-                String sql ="select LocationID from Locations";
+                String sql ="select LocationName from Locations";
                // List <IDduan> list = new ArrayList<>();
                 PreparedStatement ps = cons.prepareCall(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                   this.jComboBox3.addItem(rs.getString("LocationID"));
+                   this.jComboBox3.addItem(rs.getString("LocationName"));
                 }
                 ps.close();
                 rs.close();
@@ -594,7 +597,72 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        
+        //chuyển đổi name sang id
+         private int ID1=0;
+         public void fillComboBox11(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select ProjectID from Projects where ProjectName=?";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                tt1=(jComboBox1.getSelectedItem().toString());
+                System.out.println(""+tt1);
+                ps.setString(1,tt1);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   ID1=(Integer.parseInt(rs.getString("ProjectID")));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+         
+         private int ID2=0;
+         public void fillComboBox12(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select DepartmentID from Departments where DepartmentName=?";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                tt2=(jComboBox2.getSelectedItem().toString());
+                System.out.println(""+tt2);
+                ps.setString(1,tt2);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   ID2=(Integer.parseInt(rs.getString("DepartmentID")));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+         
+         private int ID3=0;
+         public void fillComboBox13(){
+            try{
+                Connection cons = jdbcHelper.getConnection();
+                String sql ="select LocationID from Locations where LocationName=?";
+               // List <IDduan> list = new ArrayList<>();
+                PreparedStatement ps = cons.prepareCall(sql);
+                tt3=(jComboBox3.getSelectedItem().toString());
+                System.out.println(""+tt3);
+                ps.setString(1,tt3);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                   ID3=(Integer.parseInt(rs.getString("LocationID")));
+                }
+                ps.close();
+                rs.close();
+              //  return list;
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
 	  Connhanvien getModel(){
 		  Connhanvien model = new Connhanvien();
                     model.setTenNV(txthoten.getText());
@@ -607,10 +675,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                         model.setAdmin(true); 
                     }
                     fillComboBox10();
+                    fillComboBox11();
+                    fillComboBox12();
+                    fillComboBox13();
                     model.setRoleID(ID);
-                    model.setMaduan(Integer.parseInt((String) jComboBox1.getSelectedItem()));
-                    model.setMaphongban(Integer.parseInt((String) jComboBox2.getSelectedItem()));
-                    model.setMadiachi(Integer.parseInt((String) jComboBox3.getSelectedItem()));
+                    model.setMaduan(ID1);
+                    model.setMaphongban(ID2);
+                    model.setMadiachi(ID3);
                     
 		  return model;
 	  }    
