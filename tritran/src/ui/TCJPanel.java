@@ -8,6 +8,7 @@ package ui;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import model.NhanVien;
 
 /**
  *
@@ -52,15 +53,15 @@ public class TCJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btndoimk = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lbldongho = new javax.swing.JLabel();
         lbldate = new javax.swing.JLabel();
 
-        jButton1.setText("Đổi Mk");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btndoimk.setText("Đổi Mk");
+        btndoimk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btndoimkActionPerformed(evt);
             }
         });
 
@@ -83,7 +84,7 @@ public class TCJPanel extends javax.swing.JPanel {
                 .addGap(53, 53, 53))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(135, 135, 135)
-                .addComponent(jButton1)
+                .addComponent(btndoimk)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,7 +96,7 @@ public class TCJPanel extends javax.swing.JPanel {
                         .addComponent(lbldongho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jButton1)
+                        .addComponent(btndoimk)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -117,13 +118,19 @@ public class TCJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         new DoiMKJFrame().setVisible(true); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
+         
+        
+        DoiMKJFrame frame = new DoiMKJFrame();
+                frame.setTitle("Đổi Mật Khẩu");
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+                frame.setVisible(true);
+    }//GEN-LAST:event_btndoimkActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btndoimk;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldate;
