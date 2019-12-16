@@ -19,9 +19,10 @@ public class QLPBJPanel extends javax.swing.JPanel {
     public QLPBJPanel() {
         initComponents();
         
-        QuanLyPBController controller = new QuanLyPBController(pnview, txtSearch, btnadd);
+        QuanLyPBController controller = new QuanLyPBController(pnview, txtSearch, btnadd,btnxoa);
         controller.setDateToTable();
         controller.setEvent();
+        controller.setdelete();
     }
 
     /**

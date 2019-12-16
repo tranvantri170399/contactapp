@@ -8,9 +8,12 @@ package ui;
 import DAO.NhanVienDAOiml;
 import helper.DialogHelper;
 import helper.ShareHelper;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.NhanVien;
+import model.loginDTO;
 
 /**
  *
@@ -24,6 +27,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,6 +172,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         this.login();
+        String a=(txtdangnhap.getText());
+        String b=(txtpass.getText());
+        loginDTO lg = new loginDTO(a, b);
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
@@ -263,10 +270,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             if(nhanVien != null){ 
                 String matKhau2 = nhanVien.getPassWord(); 
                 if(matKhau.equals(matKhau2)){ 
-    //                ShareHelper.USER = nhanVien; 
                     DialogHelper.alert(this, "Đăng nhập thành công!"); 
-//                    Main mn = new Main();
-//                    mn.setVisible(true);
                     this.dispose(); 
                 } 
                 else{ 
@@ -281,5 +285,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!"); 
         } 
     } 
-  
+    loginDTO getlist(){
+        loginDTO n = new loginDTO();
+        n.setManv(txtdangnhap.getText());
+        n.setMatKhau(txtpass.getText());
+        return n;
+    }
 }

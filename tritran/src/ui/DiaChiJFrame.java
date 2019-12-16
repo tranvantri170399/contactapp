@@ -7,6 +7,8 @@
 package ui;
 
 import controller.DiaChiController;
+import helper.jdbcHelper;
+import javax.swing.JOptionPane;
 import model.DiaChi;
 
 /**
@@ -47,9 +49,16 @@ public class DiaChiJFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnsave.setText("SAVE");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Địa Chỉ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+
+        txtmadc.setEditable(false);
 
         jLabel1.setText("Location ID");
         jLabel1.setToolTipText("");
@@ -139,6 +148,19 @@ public class DiaChiJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+        if (mode==1) {
+            String sqlDc="INSERT INTO Locations (LocationName,LocationAllowance) VALUES (?,?)";
+            jdbcHelper.executeUpdate(sqlDc,txttendc.getText(),txtla.getText());
+            JOptionPane.showMessageDialog(null,"Lưu Thành Công");
+        }else{
+             String sql="UPDATE Locations SET LocationName=?, LocationAllowance=? WHERE LocationID=?";
+                   jdbcHelper.executeUpdate(sql,txttendc.getText(),txtla.getText(),txtmadc.getText()); 
+            JOptionPane.showMessageDialog(null,"Cập Nhật Thành Công");
+        }
+    }//GEN-LAST:event_btnsaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,4 +178,9 @@ public class DiaChiJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txttendc;
     // End of variables declaration//GEN-END:variables
 
+        private int mode=0;
+        public void loadeid(){
+            mode=1;
+            System.out.println("co: "+mode);
+        }
 }

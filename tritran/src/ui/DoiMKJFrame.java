@@ -10,20 +10,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import model.NhanVien;
-import controller.DoiMKController;
+import model.loginDTO;
 /**
  *
  * @author Nguyễn Văn Tuấn
  */
 public class DoiMKJFrame extends javax.swing.JFrame {
-
     /**
      * Creates new form DoiMKJFrame
      */
     public DoiMKJFrame() {
         initComponents();
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,7 +37,7 @@ public class DoiMKJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtnewpass = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        lbluser = new javax.swing.JLabel();
+        lbluser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,11 +89,15 @@ public class DoiMKJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtoldpass, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtnewpass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(lbluser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtoldpass, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtnewpass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lbluser))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)
@@ -122,11 +124,11 @@ public class DoiMKJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel6)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbluser, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lbluser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(txtoldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -199,7 +201,7 @@ public class DoiMKJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lbluser;
+    private javax.swing.JTextField lbluser;
     private javax.swing.JPasswordField txtnewpass;
     private javax.swing.JPasswordField txtoldpass;
     private javax.swing.JPasswordField txtretypass;
@@ -220,8 +222,4 @@ public class DoiMKJFrame extends javax.swing.JFrame {
             return true;
         }
     }
-       
-         private void loaddata(){
-             
-         }
 }

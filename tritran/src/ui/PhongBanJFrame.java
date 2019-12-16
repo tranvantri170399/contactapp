@@ -146,7 +146,7 @@ public class PhongBanJFrame extends javax.swing.JFrame {
             jdbcHelper.executeUpdate(sqlDA,txttenda.getText());
             JOptionPane.showMessageDialog(null,"Lưu Thanh Công");
         }else{
-             String sql="UPDATE Projects SET DepartmentName=? WHERE DepartmentID=?";
+             String sql="UPDATE Departments SET DepartmentName=? WHERE DepartmentID=?";
                    jdbcHelper.executeUpdate(sql,txttenda.getText(),txtmada.getText()); 
             JOptionPane.showMessageDialog(null,"Cập Nhật Thành Công");
         }
