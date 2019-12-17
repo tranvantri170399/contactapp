@@ -60,8 +60,12 @@ public class QLDCJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnadd.setBackground(new java.awt.Color(0, 153, 255));
+        btnadd.setForeground(new java.awt.Color(255, 255, 255));
         btnadd.setText("Thêm mới");
 
+        btnxoa.setBackground(new java.awt.Color(0, 153, 255));
+        btnxoa.setForeground(new java.awt.Color(255, 255, 255));
         btnxoa.setText("Xóa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
