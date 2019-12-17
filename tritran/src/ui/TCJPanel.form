@@ -153,7 +153,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblhiendl">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hi&#x1ec7;n D&#x1eef; Li&#x1ec7;u C&#xe1; Nh&#xe2;n"/>
+            <Property name="text" type="java.lang.String" value="Hi&#x1ec7;n D&#x1eef; Li&#x1ec7;u C&#xe1; nhan"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblhiendlMouseClicked"/>

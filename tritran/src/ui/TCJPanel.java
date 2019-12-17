@@ -89,7 +89,7 @@ private String filename=null;
 
         jLabel3.setText("Tên Nhân Viên");
 
-        lblhiendl.setText("Hiện Dữ Liệu Cá Nhân");
+        lblhiendl.setText("Hiện Dữ Liệu Cá nhan");
         lblhiendl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblhiendlMouseClicked(evt);
