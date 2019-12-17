@@ -42,7 +42,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(600, 500));
 
-        btnAdd.setBackground(new java.awt.Color(255, 0, 0));
+        btnAdd.setBackground(new java.awt.Color(204, 204, 204));
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAdd.setText("Thêm mới");
         btnAdd.setBorder(null);
@@ -78,7 +78,9 @@ public class QLNVJPanel extends javax.swing.JPanel {
             .addGap(0, 425, Short.MAX_VALUE)
         );
 
+        btnxoa.setBackground(new java.awt.Color(204, 204, 204));
         btnxoa.setText("Xóa");
+        btnxoa.setPreferredSize(new java.awt.Dimension(50, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,8 +92,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
                     .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())

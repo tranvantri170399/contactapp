@@ -94,7 +94,7 @@ public class PhongBanJFrame extends javax.swing.JFrame {
                 .addGap(0, 30, Short.MAX_VALUE))
         );
 
-        btnsave.setText("SAVE");
+        btnsave.setText("Lưu");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);

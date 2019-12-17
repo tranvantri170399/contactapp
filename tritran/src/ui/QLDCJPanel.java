@@ -51,7 +51,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
         );
         pnviewLayout.setVerticalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGap(0, 265, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +60,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnadd.setText("ADD");
+        btnadd.setText("Thêm mới");
 
         btnxoa.setText("Xóa");
 
@@ -75,9 +75,8 @@ public class QLDCJPanel extends javax.swing.JPanel {
                         .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(btnxoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnadd)
@@ -86,13 +85,13 @@ public class QLDCJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnadd)
-                    .addComponent(btnxoa))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnxoa)
+                    .addComponent(btnadd))
                 .addGap(18, 18, 18)
-                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
     }// </editor-fold>//GEN-END:initComponents
