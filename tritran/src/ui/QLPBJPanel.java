@@ -51,7 +51,7 @@ public class QLPBJPanel extends javax.swing.JPanel {
         );
         pnviewLayout.setVerticalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+            .addGap(0, 357, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +88,12 @@ public class QLPBJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnadd)
-                        .addComponent(btnxoa)))
-                .addGap(18, 18, 18)
+                        .addComponent(btnxoa))
+                    .addComponent(txtSearch))
+                .addGap(18, 23, Short.MAX_VALUE)
                 .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
