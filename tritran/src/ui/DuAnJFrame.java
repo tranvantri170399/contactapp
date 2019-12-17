@@ -93,7 +93,7 @@ public class DuAnJFrame extends javax.swing.JFrame {
                 .addGap(0, 21, Short.MAX_VALUE))
         );
 
-        btnsave.setText("SAVE");
+        btnsave.setText("LƯU");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);

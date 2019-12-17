@@ -83,12 +83,16 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+
+        jPanel3.setBackground(new java.awt.Color(51, 204, 255));
         jpnmenu.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 22));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản Lý Nhân Sự");
 
@@ -147,7 +151,7 @@ public class Main extends javax.swing.JFrame {
         lblQLNV.setForeground(new java.awt.Color(255, 255, 255));
         lblQLNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQLNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/qlnv.png"))); // NOI18N
-        lblQLNV.setText("Quản Lí  Nhân Viên");
+        lblQLNV.setText("Quản Lí Nhân Viên");
 
         javax.swing.GroupLayout pnQLNVLayout = new javax.swing.GroupLayout(pnQLNV);
         pnQLNV.setLayout(pnQLNVLayout);
