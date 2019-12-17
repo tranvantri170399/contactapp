@@ -60,8 +60,10 @@ public class QLPBJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnadd.setBackground(new java.awt.Color(0, 200, 83));
         btnadd.setText("Thêm mới");
 
+        btnxoa.setBackground(new java.awt.Color(0, 200, 83));
         btnxoa.setText("Xóa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

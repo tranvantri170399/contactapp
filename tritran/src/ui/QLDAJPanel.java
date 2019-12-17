@@ -41,6 +41,9 @@ public class QLDAJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(600, 500));
 
         jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách dự án", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jpnView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpnView.setMinimumSize(new java.awt.Dimension(100, 200));
+        jpnView.setPreferredSize(new java.awt.Dimension(580, 500));
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
@@ -50,7 +53,7 @@ public class QLDAJPanel extends javax.swing.JPanel {
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 426, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -59,9 +62,10 @@ public class QLDAJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnadd.setBackground(new java.awt.Color(0, 51, 204));
         btnadd.setText("Thêm mới");
 
-        btnxoa.setBackground(new java.awt.Color(153, 255, 255));
+        btnxoa.setBackground(new java.awt.Color(0, 51, 255));
         btnxoa.setText("Xóa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -71,14 +75,16 @@ public class QLDAJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                         .addComponent(btnxoa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnadd)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(btnadd)
+                        .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +95,7 @@ public class QLDAJPanel extends javax.swing.JPanel {
                     .addComponent(btnxoa)
                     .addComponent(btnadd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
