@@ -30,8 +30,6 @@ public class TCJPanel extends javax.swing.JPanel {
      */
     public TCJPanel() {
         initComponents();
-        loadimage();
-        setimage();
         new Thread(){
         @Override
         public void run() {
