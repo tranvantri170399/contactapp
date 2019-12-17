@@ -56,8 +56,6 @@ public class DoiMKJFrame extends javax.swing.JFrame {
             }
         });
 
-        btncreate.setBackground(new java.awt.Color(0, 153, 255));
-        btncreate.setForeground(new java.awt.Color(255, 255, 255));
         btncreate.setText("Change");
         btncreate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,8 +68,6 @@ public class DoiMKJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 255));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

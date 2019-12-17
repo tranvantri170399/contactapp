@@ -109,7 +109,7 @@ public class QuanLyDAController {
         
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.getViewport().add(table);
-        scrollPane.setPreferredSize(new Dimension(1000,500));
+        scrollPane.setPreferredSize(new Dimension(2000,1000));
         
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());

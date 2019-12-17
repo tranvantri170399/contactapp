@@ -40,6 +40,7 @@ public class QLDCJPanel extends javax.swing.JPanel {
         btnxoa = new javax.swing.JButton();
 
         pnview.setBorder(javax.swing.BorderFactory.createTitledBorder("Địa Chỉ"));
+        pnview.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnview.setMinimumSize(new java.awt.Dimension(100, 200));
         pnview.setPreferredSize(new java.awt.Dimension(580, 500));
 
@@ -47,11 +48,11 @@ public class QLDCJPanel extends javax.swing.JPanel {
         pnview.setLayout(pnviewLayout);
         pnviewLayout.setHorizontalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
         pnviewLayout.setVerticalGroup(
             pnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
+            .addGap(0, 267, Short.MAX_VALUE)
         );
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -60,12 +61,10 @@ public class QLDCJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnadd.setBackground(new java.awt.Color(0, 153, 255));
-        btnadd.setForeground(new java.awt.Color(255, 255, 255));
+        btnadd.setBackground(new java.awt.Color(0, 0, 255));
         btnadd.setText("Thêm mới");
 
-        btnxoa.setBackground(new java.awt.Color(0, 153, 255));
-        btnxoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnxoa.setBackground(new java.awt.Color(0, 0, 255));
         btnxoa.setText("Xóa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -76,27 +75,28 @@ public class QLDCJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                        .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnxoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnadd)
-                        .addGap(27, 27, 27))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnxoa)
-                    .addComponent(btnadd))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnxoa)
+                        .addComponent(btnadd))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnview, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
 

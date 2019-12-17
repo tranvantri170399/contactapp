@@ -42,9 +42,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(600, 500));
 
-        btnAdd.setBackground(new java.awt.Color(0, 153, 255));
+        btnAdd.setBackground(new java.awt.Color(0, 200, 83));
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Thêm mới");
         btnAdd.setBorder(null);
 
@@ -65,6 +64,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             }
         });
 
+        jpnView5.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhân Viên"));
         jpnView5.setMinimumSize(new java.awt.Dimension(100, 200));
         jpnView5.setPreferredSize(new java.awt.Dimension(580, 500));
 
@@ -76,11 +76,10 @@ public class QLNVJPanel extends javax.swing.JPanel {
         );
         jpnView5Layout.setVerticalGroup(
             jpnView5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
-        btnxoa.setBackground(new java.awt.Color(0, 153, 255));
-        btnxoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnxoa.setBackground(new java.awt.Color(0, 200, 83));
         btnxoa.setText("Xóa");
         btnxoa.setPreferredSize(new java.awt.Dimension(50, 25));
 
@@ -91,7 +90,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                    .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
@@ -112,7 +111,7 @@ public class QLNVJPanel extends javax.swing.JPanel {
                         .addGap(3, 3, 3)
                         .addComponent(btnxoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jpnView5, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

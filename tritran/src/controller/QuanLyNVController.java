@@ -108,6 +108,10 @@ public class QuanLyNVController {
         table.getColumnModel().getColumn(1).setMaxWidth(0);
         table.getColumnModel().getColumn(1).setPreferredWidth(0);
         
+        table.getColumnModel().getColumn(5).setMinWidth(0);
+        table.getColumnModel().getColumn(5).setMaxWidth(0);
+        table.getColumnModel().getColumn(5).setPreferredWidth(0);
+        
         
         table.getTableHeader().setFont(new Font("Arrial",Font.BOLD,14));
         table.getTableHeader().setPreferredSize(new Dimension(100,50));

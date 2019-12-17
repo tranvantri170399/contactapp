@@ -72,8 +72,6 @@ public class NewAccount extends javax.swing.JFrame {
 
         jLabel4.setText("RetypePass");
 
-        btncreate.setBackground(new java.awt.Color(0, 153, 255));
-        btncreate.setForeground(new java.awt.Color(255, 255, 255));
         btncreate.setText("Create");
         btncreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,8 +79,6 @@ public class NewAccount extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 255));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
