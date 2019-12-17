@@ -8,6 +8,10 @@ package ui;
 import DAO.NhanVienDAOiml;
 import helper.DialogHelper;
 import helper.ShareHelper;
+import helper.jdbcHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -30,6 +34,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
 public static String ten=null;
 public static String mk=null;
+public static int EID;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,11 +61,11 @@ public static String mk=null;
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/securi.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel3.setForeground(new java.awt.Color(0, 51, 255));
         jLabel3.setText("LOGIN");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel1.setText("User name");
+        jLabel1.setText("Username");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Password");
@@ -74,7 +79,9 @@ public static String mk=null;
 
         txtpass.setText("123456");
 
-        btnlogin.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnlogin.setBackground(new java.awt.Color(0, 51, 204));
+        btnlogin.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnlogin.setForeground(new java.awt.Color(255, 255, 255));
         btnlogin.setText("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +89,9 @@ public static String mk=null;
             }
         });
 
-        btncancel.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btncancel.setBackground(new java.awt.Color(0, 51, 204));
+        btncancel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +106,7 @@ public static String mk=null;
             }
         });
 
+        create.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         create.setText("Click here to create account");
         create.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,7 +120,7 @@ public static String mk=null;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +133,7 @@ public static String mk=null;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -131,11 +141,12 @@ public static String mk=null;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnlogin)
                                 .addGap(18, 18, 18)
-                                .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 15, Short.MAX_VALUE))
+                                .addComponent(btncancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(93, 93, 93)))
+                        .addGap(0, 8, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(create)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -271,6 +282,8 @@ public static String mk=null;
                     DialogHelper.alert(this, "Đăng nhập thành công!");
                     ten=manv;
                     mk=matKhau;
+                    setid();
+                    System.out.println(""+EID);
                     System.out.println(""+ten);
                     this.dispose(); 
                 } 
@@ -284,7 +297,7 @@ public static String mk=null;
         }  
         catch (Exception e) { 
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!"); 
-        } 
+        }
     } 
     loginDTO getlist(){
         loginDTO n = new loginDTO();
@@ -292,4 +305,22 @@ public static String mk=null;
         n.setMatKhau(txtpass.getText());
         return n;
     }
+  
+   public void setid(){
+       try{
+                        Connection cons = jdbcHelper.getConnection();
+                        String sql2 ="select EmployeeID from Employees where Username=?";
+                        PreparedStatement ps = cons.prepareCall(sql2);
+                        ps.setString(1,DangNhapJDialog.ten);
+                        ResultSet rs = ps.executeQuery();
+                        while(rs.next()){
+                           EID=(Integer.parseInt(rs.getString("EmployeeID")));
+                        }
+                        System.out.println("so id: "+EID);
+                        ps.close();
+                        rs.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+   }
 }
