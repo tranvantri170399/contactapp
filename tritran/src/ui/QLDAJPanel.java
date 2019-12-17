@@ -43,7 +43,7 @@ public class QLDAJPanel extends javax.swing.JPanel {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
 
-        jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách dự án", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách dự án", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(0, 153, 255))); // NOI18N
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
@@ -64,7 +64,8 @@ public class QLDAJPanel extends javax.swing.JPanel {
 
         btnadd.setText("Thêm mới");
 
-        btnxoa.setBackground(new java.awt.Color(153, 255, 255));
+        btnxoa.setBackground(new java.awt.Color(0, 153, 255));
+        btnxoa.setForeground(new java.awt.Color(255, 255, 255));
         btnxoa.setText("Xóa");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
