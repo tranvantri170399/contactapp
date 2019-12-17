@@ -8,6 +8,10 @@ package ui;
 import DAO.NhanVienDAOiml;
 import helper.DialogHelper;
 import helper.ShareHelper;
+import helper.jdbcHelper;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -30,6 +34,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
 public static String ten=null;
 public static String mk=null;
+public static int EID;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,6 +276,8 @@ public static String mk=null;
                     DialogHelper.alert(this, "Đăng nhập thành công!");
                     ten=manv;
                     mk=matKhau;
+                    setid();
+                    System.out.println(""+EID);
                     System.out.println(""+ten);
                     this.dispose(); 
                 } 
@@ -284,7 +291,7 @@ public static String mk=null;
         }  
         catch (Exception e) { 
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!"); 
-        } 
+        }
     } 
     loginDTO getlist(){
         loginDTO n = new loginDTO();
@@ -292,4 +299,22 @@ public static String mk=null;
         n.setMatKhau(txtpass.getText());
         return n;
     }
+  
+   public void setid(){
+       try{
+                        Connection cons = jdbcHelper.getConnection();
+                        String sql2 ="select EmployeeID from Employees where Username=?";
+                        PreparedStatement ps = cons.prepareCall(sql2);
+                        ps.setString(1,DangNhapJDialog.ten);
+                        ResultSet rs = ps.executeQuery();
+                        while(rs.next()){
+                           EID=(Integer.parseInt(rs.getString("EmployeeID")));
+                        }
+                        System.out.println("so id: "+EID);
+                        ps.close();
+                        rs.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+   }
 }
