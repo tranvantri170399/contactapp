@@ -28,7 +28,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
-
+public static String ten=null;
+public static String mk=null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,9 +173,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         this.login();
-        String a=(txtdangnhap.getText());
-        String b=(txtpass.getText());
-        loginDTO lg = new loginDTO(a, b);
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
@@ -270,7 +268,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             if(nhanVien != null){ 
                 String matKhau2 = nhanVien.getPassWord(); 
                 if(matKhau.equals(matKhau2)){ 
-                    DialogHelper.alert(this, "Đăng nhập thành công!"); 
+                    DialogHelper.alert(this, "Đăng nhập thành công!");
+                    ten=manv;
+                    mk=matKhau;
+                    System.out.println(""+ten);
                     this.dispose(); 
                 } 
                 else{ 
