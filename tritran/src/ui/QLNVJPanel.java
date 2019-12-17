@@ -42,8 +42,9 @@ public class QLNVJPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(600, 500));
 
-        btnAdd.setBackground(new java.awt.Color(204, 204, 204));
+        btnAdd.setBackground(new java.awt.Color(0, 153, 255));
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Thêm mới");
         btnAdd.setBorder(null);
 
@@ -78,7 +79,8 @@ public class QLNVJPanel extends javax.swing.JPanel {
             .addGap(0, 425, Short.MAX_VALUE)
         );
 
-        btnxoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnxoa.setBackground(new java.awt.Color(0, 153, 255));
+        btnxoa.setForeground(new java.awt.Color(255, 255, 255));
         btnxoa.setText("Xóa");
         btnxoa.setPreferredSize(new java.awt.Dimension(50, 25));
 

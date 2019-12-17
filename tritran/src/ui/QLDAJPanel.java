@@ -62,6 +62,8 @@ public class QLDAJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnadd.setBackground(new java.awt.Color(0, 153, 255));
+        btnadd.setForeground(new java.awt.Color(255, 255, 255));
         btnadd.setText("Thêm mới");
 
         btnxoa.setBackground(new java.awt.Color(0, 153, 255));

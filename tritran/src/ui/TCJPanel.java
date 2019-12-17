@@ -77,15 +77,17 @@ private String filename=null;
         jLabel5 = new javax.swing.JLabel();
         rboql = new javax.swing.JRadioButton();
         rbonv = new javax.swing.JRadioButton();
+        txtmanv = new javax.swing.JLabel();
         txttennv = new javax.swing.JLabel();
-        txtngaysinh = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        txtmada = new javax.swing.JLabel();
+        txtpb = new javax.swing.JLabel();
+        txtdc = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
+        btndoimk.setBackground(new java.awt.Color(0, 153, 255));
+        btndoimk.setForeground(new java.awt.Color(255, 255, 255));
         btndoimk.setText("Đổi Mật Khẩu");
         btndoimk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +114,7 @@ private String filename=null;
         });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel1.setText("Ngày Sinh");
+        jLabel1.setText("Mã Nhân Viên");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel7.setText("Mã Dự Án");
@@ -135,21 +137,21 @@ private String filename=null;
         rbonv.setText("Nhân Viên");
         rbonv.setEnabled(false);
 
+        txtmanv.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtmanv.setText("aaaaaaaaa");
+
+        txttennv.setBackground(new java.awt.Color(0, 0, 0));
         txttennv.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txttennv.setText("aaaaaaaaa");
+        txttennv.setText("aaaaaaaaaaaaa");
 
-        txtngaysinh.setBackground(new java.awt.Color(0, 0, 0));
-        txtngaysinh.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtngaysinh.setText("aaaaaaaaaaaaa");
+        txtmada.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtmada.setText("aaaaaaaaaaa");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("aaaaaaaaaaa");
+        txtpb.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtpb.setText("aaaaaaaaaa");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel6.setText("aaaaaaaaaa");
-
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel11.setText("aaaaaaaaaa");
+        txtdc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtdc.setText("aaaaaaaaaa");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,10 +171,6 @@ private String filename=null;
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txttennv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblhiendl, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -181,20 +179,24 @@ private String filename=null;
                                             .addComponent(jLabel9))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel11))))
+                                            .addComponent(txtpb)
+                                            .addComponent(txtdc))))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtngaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                    .addComponent(txtmanv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addComponent(txtmada)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txttennv, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                        .addGap(28, 28, 28))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,25 +219,25 @@ private String filename=null;
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txttennv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtmanv)
+                            .addComponent(jLabel1))
                         .addGap(13, 13, 13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txttennv, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(txtmada))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel6))
+                            .addComponent(txtpb))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel11))
+                            .addComponent(txtdc))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -293,6 +295,7 @@ private String filename=null;
         // TODO add your handling code here:
         loadimage();
         setimage();
+        loaddata();
     }//GEN-LAST:event_lblhiendlMouseClicked
 
 
@@ -300,12 +303,9 @@ private String filename=null;
     private javax.swing.JButton btndoimk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -316,7 +316,10 @@ private String filename=null;
     private javax.swing.JLabel lblimage;
     private javax.swing.JRadioButton rbonv;
     private javax.swing.JRadioButton rboql;
-    private javax.swing.JLabel txtngaysinh;
+    private javax.swing.JLabel txtdc;
+    private javax.swing.JLabel txtmada;
+    private javax.swing.JLabel txtmanv;
+    private javax.swing.JLabel txtpb;
     private javax.swing.JLabel txttennv;
     // End of variables declaration//GEN-END:variables
 
@@ -337,7 +340,7 @@ private String filename=null;
                         "      ,[image]\n" +
                         "      ,[gioitinh]\n" +
                         "      ,[ngaysinh]\n" +
-                        "  FROM [EmployeeTransferManagement2019].[dbo].[Image] WHERE EmployeeID=?";
+                            "  FROM [EmployeeTransferManagement2019].[dbo].[Image] WHERE EmployeeID=?";
                     int id=DangNhapJDialog.EID;
                     System.out.println(""+id);
                     List <Image> list = new ArrayList<>();
@@ -366,22 +369,44 @@ private String filename=null;
 		 lblimage.setIcon(imageIcon);
 		 personimage=img;
    }
-//   int EID=0;
-//   public void setid(){
-//       try{
-//                        Connection cons = jdbcHelper.getConnection();
-//                        String sql2 ="select EmployeeID from Employees where Username=?";
-//                        PreparedStatement ps = cons.prepareCall(sql2);
-//                        ps.setString(1,DangNhapJDialog.ten);
-//                        ResultSet rs = ps.executeQuery();
-//                        while(rs.next()){
-//                           EID=(Integer.parseInt(rs.getString("EmployeeID")));
-//                        }
-//                        System.out.println("so id: "+EID);
-//                        ps.close();
-//                        rs.close();
-//                }catch(Exception e){
-//                    e.printStackTrace();
-//                }
-//   }
+        public void loaddata(){
+                try{
+                    Connection cons = jdbcHelper.getConnection();
+                    String sql ="SELECT [EmployeeID]\n" +
+                                "      ,[EmployeeName]\n" +
+                                "      ,[ProjectID]\n" +
+                                "      ,[DepartmentID]\n" +
+                                "      ,[LocationID]\n" +
+                                "      ,[IsSystemAdmin]	\n" +
+                                "  FROM [EmployeeTransferManagement2019].[dbo].[Employees] WHERE EmployeeID=?";
+                    int id=DangNhapJDialog.EID;
+                    System.out.println(""+id);
+                    List <Image> list = new ArrayList<>();
+                    PreparedStatement ps = cons.prepareCall(sql);
+                    ps.setInt(1,id);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()){
+                       // Image nv = new Image();
+                       int idnhanvien=rs.getInt("EmployeeID");
+                        txtmanv.setText(""+idnhanvien);
+                        
+                        txttennv.setText(rs.getString("EmployeeName"));
+
+                       // txtmada.setText(rs.getInt("ProjectID"));
+                        int manhanvien=rs.getInt("ProjectID");
+                        txtmada.setText(""+manhanvien);                       
+                       // txtpb.setText(rs.getInt("DepartmentID"));
+                       int phongban=rs.getInt("DepartmentID");
+                        txtpb.setText(""+phongban);
+                        //txtdc.setText(rs.getInt("LocationID"));
+                        int dc=rs.getInt("LocationID");
+                        txtdc.setText(""+dc);
+                        list.add(iml);
+                    }
+                    ps.close();
+                            rs.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+          }
 }
