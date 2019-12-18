@@ -13,8 +13,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.Cell;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,6 +37,10 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Connhanvien;
 import model.NhanVien;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.NhanVienService;
 import service.NhanVienServiceiml;
 import ui.NhanVienJFrame;
@@ -44,6 +55,7 @@ public class QuanLyNVController {
     private JPanel jpnView;
     private JButton btnAdd;
     private JButton btnxoa;
+    private JButton btnprint;
     private JTextField txtSearch;
     private int index;
     private int macd;
@@ -57,11 +69,12 @@ public class QuanLyNVController {
     public QuanLyNVController() {
     }
 
-    public QuanLyNVController(JPanel jpnView, JButton btnAdd, JTextField txtSearch,JButton btnxoa) {
+    public QuanLyNVController(JPanel jpnView, JButton btnAdd, JTextField txtSearch,JButton btnxoa,JButton btnprint) {
         this.jpnView = jpnView;
         this.btnAdd = btnAdd;
         this.txtSearch = txtSearch;
         this.btnxoa=btnxoa;
+        this.btnprint=btnprint;
         
         this.nhanVienSercvice = new NhanVienServiceiml();
     }
@@ -221,6 +234,98 @@ public class QuanLyNVController {
             @Override
             public void mouseExited(MouseEvent e) {
                  btnxoa.setBackground(new Color(100,221,23));
+            }
+
+            
+  
+});
+    }
+    //print
+        public void Print(){
+            btnprint.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("b1");
+                XSSFWorkbook workbook= new XSSFWorkbook();
+                XSSFSheet sheet= workbook.createSheet("Nhan Vien");
+                
+                XSSFRow row = null;
+                org.apache.poi.ss.usermodel.Cell cell= null;
+                
+                row= sheet.createRow(3);
+                
+                cell= row.createCell(0,CellType.STRING);
+                cell.setCellValue("STT");
+                
+                cell= row.createCell(1,CellType.STRING);
+                cell.setCellValue("Ma Nhan Vien");
+                
+                cell= row.createCell(2,CellType.STRING);
+                cell.setCellValue("Ten Nhan Vien");
+                
+                cell= row.createCell(3,CellType.STRING);
+                cell.setCellValue("Tai khoan");
+                
+                cell= row.createCell(4,CellType.STRING);
+                cell.setCellValue("Mat Khau");
+                
+                
+                cell= row.createCell(5,CellType.STRING);
+                cell.setCellValue("ten du an");
+               List<NhanVien> listItem = nhanVienSercvice.getList();
+               
+                if (listItem!= null) {
+                    System.out.println("b2");
+                    int s = listItem.size();
+                    for (int i = 0; i < s; i++) {
+                        NhanVien nv = listItem.get(i);
+                        row=sheet.createRow(4+i);
+                        
+                        cell=row.createCell(0, CellType.NUMERIC);
+                        cell.setCellValue(i+1);
+                         
+                        cell= row.createCell(1,CellType.STRING);
+                        cell.setCellValue(nv.getMaNV()); 
+                        
+                        cell= row.createCell(2,CellType.STRING);
+                        cell.setCellValue(nv.getTenNV()); 
+                        
+                        cell= row.createCell(3,CellType.STRING);
+                        cell.setCellValue(nv.getUsername());
+                        
+                        cell= row.createCell(4,CellType.STRING);
+                        cell.setCellValue(nv.getPassWord());
+                        
+                        cell= row.createCell(5,CellType.STRING);
+                        cell.setCellValue(nv.getRoleName());
+                    }
+                     FileOutputStream out = null;
+                    try {
+                        out = new FileOutputStream(new File("D:/hv.xlsx"));
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(QuanLyNVController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        workbook.write(out);
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuanLyNVController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        out.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuanLyNVController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnprint.setBackground(new Color(0,200,83));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                 btnprint.setBackground(new Color(100,221,23));
             }
 
             
