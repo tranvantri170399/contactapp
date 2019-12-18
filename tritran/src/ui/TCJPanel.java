@@ -75,6 +75,15 @@ private String filename=null;
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        rboql = new javax.swing.JRadioButton();
+        rbonv = new javax.swing.JRadioButton();
+        txtmanv = new javax.swing.JLabel();
+        txttennv = new javax.swing.JLabel();
+        txtmada = new javax.swing.JLabel();
+        txtpb = new javax.swing.JLabel();
+        txtdc = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
 
@@ -112,6 +121,39 @@ private String filename=null;
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel7.setText("Mã Dự Án");
 
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel9.setText("Mã Phòng Ban");
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel10.setText("Mã Địa Chỉ");
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setText("Vai Trò");
+
+        rboql.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rboql.setSelected(true);
+        rboql.setText("Quản lý");
+        rboql.setEnabled(false);
+
+        rbonv.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rbonv.setText("Nhân Viên");
+        rbonv.setEnabled(false);
+
+        txtmanv.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtmanv.setText(" ");
+
+        txttennv.setBackground(new java.awt.Color(0, 0, 0));
+        txttennv.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txttennv.setText(" ");
+
+        txtmada.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtmada.setText(" ");
+
+        txtpb.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtpb.setText(" ");
+
+        txtdc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtdc.setText(" ");
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setText("Mã Phòng ban ");
 
@@ -131,9 +173,13 @@ private String filename=null;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+
+                                .addComponent(lblhiendl, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btndoimk)
                                 .addGap(18, 18, 18)
@@ -145,11 +191,28 @@ private String filename=null;
                                     .addComponent(jLabel7))
                                 .addGap(69, 69, 69)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+                                    .addComponent(txtmanv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtmada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txttennv, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                                        .addGap(28, 28, 28))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtpb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtdc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+
                                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(lblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
+
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbldate, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,7 +299,6 @@ private String filename=null;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

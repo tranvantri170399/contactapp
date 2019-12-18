@@ -61,9 +61,11 @@ public class Main extends javax.swing.JFrame {
         jpnRoot = new javax.swing.JPanel();
         jpnview = new javax.swing.JPanel();
         jpnmenu = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jpnten = new javax.swing.JPanel();
+        lblTen = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
+        btntransfer = new javax.swing.JLabel();
+        btnExit = new javax.swing.JLabel();
         pnMHC = new javax.swing.JPanel();
         lblMHC = new javax.swing.JLabel();
         pnQLNV = new javax.swing.JPanel();
@@ -74,8 +76,12 @@ public class Main extends javax.swing.JFrame {
         lblQLPB = new javax.swing.JLabel();
         pnQLDC = new javax.swing.JPanel();
         lblQLDC = new javax.swing.JLabel();
+
+        lblbq = new javax.swing.JLabel();
+
         jLabel4 = new javax.swing.JLabel();
         lblclickhere = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +98,41 @@ public class Main extends javax.swing.JFrame {
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+
+        jpnten.setBackground(new java.awt.Color(51, 204, 255));
+
+        lblTen.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        lblTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTen.setText("Quản Lý Nhân Sự");
+
+        lbllogo.setBackground(new java.awt.Color(0, 153, 255));
+        lbllogo.setFont(new java.awt.Font("VNI-Zap", 1, 48)); // NOI18N
+        lbllogo.setForeground(new java.awt.Color(0, 51, 255));
+        lbllogo.setText("TTT");
+
+        btntransfer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Refresh.png"))); // NOI18N
+
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Stop.png"))); // NOI18N
+        btnExit.setToolTipText("");
+
+        javax.swing.GroupLayout jpntenLayout = new javax.swing.GroupLayout(jpnten);
+        jpnten.setLayout(jpntenLayout);
+        jpntenLayout.setHorizontalGroup(
+            jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpntenLayout.createSequentialGroup()
+                .addGroup(jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btntransfer)
+                    .addComponent(lbllogo))
+                .addGroup(jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpntenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTen, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpntenLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnExit)))
+                .addContainerGap(17, Short.MAX_VALUE))
 
         jpnmenu.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -116,16 +157,20 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(14, 14, 14)))
+        jpntenLayout.setVerticalGroup(
+            jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpntenLayout.createSequentialGroup()
+                .addGroup(jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lbllogo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jpntenLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTen)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpntenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btntransfer)
+                    .addComponent(btnExit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -241,6 +286,9 @@ public class Main extends javax.swing.JFrame {
             .addComponent(lblQLDC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
         );
 
+
+        lblbq.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblbq.setText("Copyright ©2019 TTT Company");
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("@ COPYRIGHT Nhà Phát Triển:  ");
 
@@ -251,7 +299,7 @@ public class Main extends javax.swing.JFrame {
         jpnmenu.setLayout(jpnmenuLayout);
         jpnmenuLayout.setHorizontalGroup(
             jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpnten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpnmenuLayout.createSequentialGroup()
                 .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnmenuLayout.createSequentialGroup()
@@ -273,11 +321,16 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(pnQLDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pnQLPB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+            .addGroup(jpnmenuLayout.createSequentialGroup()
+                .addComponent(lblbq)
+                .addGap(0, 0, Short.MAX_VALUE))
+
         );
         jpnmenuLayout.setVerticalGroup(
             jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnmenuLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnMHC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -288,6 +341,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(pnQLPB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(pnQLDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(lblbq))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -360,19 +417,29 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
+    private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btntransfer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
+
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnmenu;
+    private javax.swing.JPanel jpnten;
     private javax.swing.JPanel jpnview;
     private javax.swing.JLabel lblMHC;
     private javax.swing.JLabel lblQLDA;
     private javax.swing.JLabel lblQLDC;
     private javax.swing.JLabel lblQLNV;
     private javax.swing.JLabel lblQLPB;
+
+    private javax.swing.JLabel lblTen;
+    private javax.swing.JLabel lblbq;
+    private javax.swing.JLabel lbllogo;
+
     private javax.swing.JLabel lblclickhere;
     private javax.swing.JPanel pnMHC;
     private javax.swing.JPanel pnQLDA;
