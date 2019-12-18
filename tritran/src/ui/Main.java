@@ -133,7 +133,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(btnExit)))
                 .addContainerGap(17, Short.MAX_VALUE))
-
+        );
         jpnmenu.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 255));
